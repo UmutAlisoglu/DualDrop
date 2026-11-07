@@ -58,7 +58,16 @@ class AdbManager private constructor(ctx: Context) : AbsAdbConnectionManager() {
     /** Runs a shell command and returns its combined output. Caller must be connected. */
     fun exec(cmd: String): String {
         openStream("shell:$cmd 2>&1").use { s ->
-            return s.openInputStream().bufferedReader().readText().trim()
+            // libadb throws "Stream closed" instead of returning -1 once the shell has exited and the
+            // queue is drained, so treat that as end-of-output.
+            val out = java.io.ByteArrayOutputStream()
+            val buf = ByteArray(4096)
+            while (true) {
+                val n = try { s.read(buf, 0, buf.size) } catch (e: java.io.IOException) { if (s.isClosed) -1 else throw e }
+                if (n < 0) break
+                out.write(buf, 0, n)
+            }
+            return out.toString("UTF-8").trim()
         }
     }
 
@@ -68,14 +77,28 @@ class AdbManager private constructor(ctx: Context) : AbsAdbConnectionManager() {
         fun get(ctx: Context): AdbManager =
             inst ?: synchronized(this) { inst ?: AdbManager(ctx.applicationContext).also { inst = it } }
 
-        /** Connect (mDNS discovery of the TLS port), run, disconnect. */
-        fun run(ctx: Context, cmd: String, timeoutMs: Long = 12_000): Result<String> = runCatching {
-            val m = get(ctx)
-            if (!m.isConnected) {
-                m.setHostAddress("127.0.0.1")
-                check(m.connectTls(ctx, timeoutMs)) { "Wireless debugging not reachable" }
+        /**
+         * Connect (mDNS discovery of the TLS port) and run. Retries with a fresh connection: right after
+         * pairing, or right after Wireless debugging was switched on, the first stream can be dropped.
+         */
+        fun run(ctx: Context, cmd: String, timeoutMs: Long = 12_000, attempts: Int = 3): Result<String> {
+            var last: Throwable? = null
+            repeat(attempts) { i ->
+                val r = runCatching {
+                    val m = get(ctx)
+                    if (!m.isConnected) {
+                        m.setHostAddress("127.0.0.1")
+                        check(m.connectTls(ctx, timeoutMs)) { "Wireless debugging not reachable" }
+                    }
+                    m.exec(cmd).also { Log.i(TAG, "$cmd -> $it") }
+                }
+                if (r.isSuccess) return r
+                last = r.exceptionOrNull()
+                Log.w(TAG, "run failed (attempt ${i + 1}/$attempts): $cmd", last)
+                runCatching { get(ctx).disconnect() }
+                Thread.sleep(1500)
             }
-            m.exec(cmd).also { Log.i(TAG, "$cmd -> $it") }
-        }.onFailure { Log.w(TAG, "run failed: $cmd", it) }
+            return Result.failure(last ?: IllegalStateException("adb failed"))
+        }
     }
 }

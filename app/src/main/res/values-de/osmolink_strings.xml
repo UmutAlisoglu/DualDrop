@@ -24,11 +24,7 @@
     <string name="ol_step2_text">Dein Handy muss mit einem WLAN verbunden sein, zum Beispiel mit deinem Heim-WLAN.</string>
     <string name="ol_btn_open_wifi">WLAN-Einstellungen öffnen</string>
     <string name="ol_step3_title">OsmoLink mit deinem Handy koppeln</string>
-    <string name="ol_step3_text">Tippe auf „Los“. Im Bildschirm, der sich öffnet:
-1) „Wireless-Debugging“ (bei Samsung „Debugging über WLAN“) einschalten und „Zulassen“ tippen.
-2) Auf den Namen „Wireless-Debugging“ selbst tippen, dann auf „Gerät mit Kopplungscode koppeln“.
-3) Die Benachrichtigungsleiste herunterziehen. Bei der OsmoLink-Benachrichtigung auf den kleinen Pfeil tippen, dann auf „Code eingeben“, die 6 Ziffern eintippen und „Senden“.
-Den Rest macht OsmoLink.</string>
+    <string name="ol_step3_text">Tippe auf „Los“. Im Bildschirm, der sich öffnet:\n1) „Wireless-Debugging“ (bei Samsung „Debugging über WLAN“) einschalten und „Zulassen“ tippen.\n2) Auf den Namen „Wireless-Debugging“ selbst tippen, dann auf „Gerät mit Kopplungscode koppeln“.\n3) Die Benachrichtigungsleiste herunterziehen. Bei der OsmoLink-Benachrichtigung auf den kleinen Pfeil tippen, dann auf „Code eingeben“, die 6 Ziffern eintippen und „Senden“.\nDen Rest macht OsmoLink.</string>
     <string name="ol_btn_start_pairing">Los</string>
     <string name="ol_pair_state_searching">⏳ Warte auf „Gerät mit Kopplungscode koppeln“…</string>
     <string name="ol_pair_state_found">👉 Gefunden. Jetzt den 6-stelligen Code in der OsmoLink-Benachrichtigung eingeben.</string>

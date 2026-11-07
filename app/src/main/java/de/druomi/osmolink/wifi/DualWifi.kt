@@ -107,7 +107,19 @@ object DualWifi {
             Settings.Global.putInt(ctx.contentResolver, "adb_wifi_enabled", 1)
             Thread.sleep(3000)
         }
-        val r = AdbManager.run(ctx, "$CMD_ON; $CHECK", 15_000)
+        val needsCompat = compat(ctx) == null
+        val r = AdbManager.run(ctx, (if (needsCompat) "$HW_QUERY; " else "") + "$CMD_ON; $CHECK", 15_000)
+        if (needsCompat && r.isSuccess) {
+            val hwOk = r.getOrThrow().contains("can be created without destroying")
+            prefs(ctx).edit().putBoolean("compat", hwOk).apply()
+            if (!hwOk) {
+                AdbManager.run(ctx, CMD_OFF)
+                disconnectAndMaybeDisableDebugging(ctx, wasOn)
+                markActive(ctx, false)
+                log(ctx, ctx.getString(R.string.ol_log_setup_unsupported))
+                return Result.failure(IllegalStateException("not supported"))
+            }
+        }
         disconnectAndMaybeDisableDebugging(ctx, wasOn)
         val ok = flagOn(r.getOrDefault(""))
         markActive(ctx, ok)

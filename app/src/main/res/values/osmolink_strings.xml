@@ -24,11 +24,7 @@
     <string name="ol_step2_text">Your phone needs to be on a Wi-Fi network, for example your home Wi-Fi.</string>
     <string name="ol_btn_open_wifi">Open Wi-Fi settings</string>
     <string name="ol_step3_title">Pair OsmoLink with your phone</string>
-    <string name="ol_step3_text">Tap \"Start\". In the screen that opens:
-1) Switch on \"Wireless debugging\" and tap \"Allow\".
-2) Tap the words \"Wireless debugging\" themselves, then \"Pair device with pairing code\".
-3) Pull down the notification shade. On the OsmoLink notification tap the small arrow, then \"Enter code\", type the 6 digits and send.
-OsmoLink does the rest.</string>
+    <string name="ol_step3_text">Tap \"Start\". In the screen that opens:\n1) Switch on \"Wireless debugging\" and tap \"Allow\".\n2) Tap the words \"Wireless debugging\" themselves, then \"Pair device with pairing code\".\n3) Pull down the notification shade. On the OsmoLink notification tap the small arrow, then \"Enter code\", type the 6 digits and send.\nOsmoLink does the rest.</string>
     <string name="ol_btn_start_pairing">Start</string>
     <string name="ol_pair_state_searching">⏳ Waiting for \"Pair device with pairing code\"…</string>
     <string name="ol_pair_state_found">👉 Found. Now enter the 6-digit code in the OsmoLink notification.</string>

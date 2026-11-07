@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- OsmoLink launcher foreground: a camera lens with two Wi-Fi arcs (both connections kept). 108dp canvas, art inside the 66dp safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- camera body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M33,46 h42 a6,6 0 0 1 6,6 v20 a6,6 0 0 1 -6,6 h-42 a6,6 0 0 1 -6,-6 v-20 a6,6 0 0 1 6,-6 z" />
+    <!-- lens ring -->
+    <path
+        android:fillColor="#00838F"
+        android:pathData="M54,62 m-11,0 a11,11 0 1 0 22,0 a11,11 0 1 0 -22,0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,62 m-6,0 a6,6 0 1 0 12,0 a6,6 0 1 0 -12,0" />
+    <path
+        android:fillColor="#00838F"
+        android:pathData="M54,62 m-3,0 a3,3 0 1 0 6,0 a3,3 0 1 0 -6,0" />
+    <!-- two Wi-Fi arcs above the camera -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M44,38 a14,14 0 0 1 20,0" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M37,31 a24,24 0 0 1 34,0" />
+</vector>
