@@ -305,7 +305,7 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="14dp"
                 android:paddingVertical="4dp"
-                android:visibility="invisible">
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/overallText"

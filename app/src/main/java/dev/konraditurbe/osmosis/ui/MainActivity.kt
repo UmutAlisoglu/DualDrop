@@ -2113,7 +2113,7 @@ class MainActivity : AppCompatActivity(), OsmoScanner.Listener, GattClient.Liste
                     overallBar.progress = 100
                     overallText.text = getString(R.string.download_done, saved, skipped, failed)
                     fileText.text = ""
-                    main.postDelayed({ progressArea.visibility = View.INVISIBLE }, 3000)
+                    main.postDelayed({ progressArea.visibility = View.GONE /* DualDrop: no empty gap when idle */ }, 3000)
                     // DualDrop: clear confirmation with a shortcut to the phone's gallery.
                     if (saved + skipped > 0) {
                         if ((adapter?.selectedCount() ?: 0) == 0) setSelectMode(false)
