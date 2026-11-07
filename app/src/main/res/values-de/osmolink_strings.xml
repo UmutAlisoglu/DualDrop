@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ol_channel_setup">Einrichtung</string>
+    <string name="ol_channel_status">Heim-WLAN behalten</string>
+
+    <string name="ol_title">Heim-WLAN behalten</string>
+    <string name="ol_intro">Normalerweise trennt sich dein Handy vom Heim-WLAN, sobald es sich mit der Kamera verbindet. OsmoLink kann das abschalten: Dann bleiben beide Verbindungen gleichzeitig bestehen, und dein Internet funktioniert weiter, während du Fotos und Videos ansiehst und herunterlädst.</string>
+    <string name="ol_status_active">✓ Aktiv. Dein Heim-WLAN bleibt verbunden, während die Kamera verbunden ist.</string>
+    <string name="ol_status_unsupported">Dein Handy kann leider keine zwei WLAN-Verbindungen gleichzeitig halten. OsmoLink funktioniert trotzdem, aber dein Heim-WLAN wird getrennt, solange die Kamera verbunden ist.</string>
+    <string name="ol_status_old_android">Dafür ist Android 11 oder neuer nötig. OsmoLink funktioniert trotzdem, aber dein Heim-WLAN wird getrennt, solange die Kamera verbunden ist.</string>
+    <string name="ol_status_paired_off">Gerade aus (zum Beispiel nach einem Neustart). Schaltet sich von selbst wieder ein, sobald dein Handy mit einem WLAN verbunden ist.</string>
+    <string name="ol_status_not_setup">Noch nicht eingerichtet. Einmalig, dauert etwa 2 Minuten.</string>
+    <string name="ol_btn_apply">Jetzt einschalten</string>
+    <string name="ol_busy_applying">Wird eingeschaltet…</string>
+    <string name="ol_busy_off">Wird ausgeschaltet…</string>
+    <string name="ol_allow_title">Wireless-Debugging in diesem WLAN erlauben</string>
+    <string name="ol_allow_text">Dieses WLAN wurde noch nicht erlaubt. Tippe auf den Knopf, schalte „Wireless-Debugging“ (Samsung: „Debugging über WLAN“) ein und bestätige mit „Zulassen“, mit Haken bei „In diesem Netzwerk immer zulassen“. Danach hierher zurückkommen.</string>
+    <string name="ol_btn_open_wireless">Wireless-Debugging öffnen</string>
+
+    <string name="ol_step1_title">Entwickleroptionen einschalten</string>
+    <string name="ol_step1_text">Öffne Einstellungen › Telefoninfo › Softwareinformationen und tippe 7-mal auf „Buildnummer“. Gib deine PIN ein, falls gefragt. Danach hierher zurückkommen.</string>
+    <string name="ol_btn_open_settings">Einstellungen öffnen</string>
+    <string name="ol_step2_title">Mit WLAN verbinden</string>
+    <string name="ol_step2_text">Dein Handy muss mit einem WLAN verbunden sein, zum Beispiel mit deinem Heim-WLAN.</string>
+    <string name="ol_btn_open_wifi">WLAN-Einstellungen öffnen</string>
+    <string name="ol_step3_title">OsmoLink mit deinem Handy koppeln</string>
+    <string name="ol_step3_text">Tippe auf „Los“. Im Bildschirm, der sich öffnet:
+1) „Wireless-Debugging“ (bei Samsung „Debugging über WLAN“) einschalten und „Zulassen“ tippen.
+2) Auf den Namen „Wireless-Debugging“ selbst tippen, dann auf „Gerät mit Kopplungscode koppeln“.
+3) Die Benachrichtigungsleiste herunterziehen. Bei der OsmoLink-Benachrichtigung auf den kleinen Pfeil tippen, dann auf „Code eingeben“, die 6 Ziffern eintippen und „Senden“.
+Den Rest macht OsmoLink.</string>
+    <string name="ol_btn_start_pairing">Los</string>
+    <string name="ol_pair_state_searching">⏳ Warte auf „Gerät mit Kopplungscode koppeln“…</string>
+    <string name="ol_pair_state_found">👉 Gefunden. Jetzt den 6-stelligen Code in der OsmoLink-Benachrichtigung eingeben.</string>
+    <string name="ol_pair_state_failed">✗ Code falsch oder abgelaufen. „Gerät mit Kopplungscode koppeln“ erneut öffnen und den neuen Code eingeben.</string>
+    <string name="ol_pair_state_paired">⏳ Gekoppelt. Einrichtung wird abgeschlossen…</string>
+
+    <string name="ol_last_log">Zuletzt: %1$s</string>
+    <string name="ol_auto_note">Nach jedem Neustart schaltet OsmoLink das von selbst wieder ein, sobald dein Handy mit einem WLAN verbunden ist.</string>
+    <string name="ol_btn_off">Ausschalten</string>
+    <string name="ol_btn_reset">Neu einrichten</string>
+
+    <string name="ol_pair_searching_title">OsmoLink-Einrichtung</string>
+    <string name="ol_pair_searching_text">Tippe auf „Gerät mit Kopplungscode koppeln“</string>
+    <string name="ol_pair_found_title">Kopplungscode gefunden</string>
+    <string name="ol_pair_found_text">Tippe auf „Code eingeben“ und gib die 6 Ziffern ein</string>
+    <string name="ol_pair_code_label">6-stelliger Code</string>
+    <string name="ol_pair_enter_code">Code eingeben</string>
+    <string name="ol_pair_working">Wird gekoppelt…</string>
+    <string name="ol_pair_wrong_title">Code falsch oder abgelaufen</string>
+    <string name="ol_pair_wrong_text">Kopplungscode erneut öffnen und nochmal versuchen</string>
+    <string name="ol_setup_done">✓ Fertig! Dein Heim-WLAN bleibt jetzt verbunden</string>
+    <string name="ol_setup_unsupported">Dieses Handy kann keine zwei WLAN-Verbindungen halten</string>
+    <string name="ol_setup_error">Einrichtung nicht abgeschlossen, bitte nochmal versuchen</string>
+    <string name="ol_setup_back">Tippe, um zu OsmoLink zurückzukehren</string>
+
+    <string name="ol_lost_title">Heim-WLAN würde getrennt</string>
+    <string name="ol_lost_text">Tippe hier, damit OsmoLink „Heim-WLAN behalten“ wieder einschaltet</string>
+
+    <string name="ol_banner_active">✓ Heim-WLAN bleibt verbunden</string>
+    <string name="ol_banner_setup">Heim-WLAN behalten, während die Kamera verbunden ist: hier einrichten</string>
+    <string name="ol_banner_paired_off">„Heim-WLAN behalten“ ist gerade aus: hier einschalten</string>
+    <string name="ol_banner_unsupported">Dein Heim-WLAN wird getrennt, solange die Kamera verbunden ist (Handy nicht unterstützt)</string>
+    <string name="ol_about_credit">OsmoLink basiert auf Osmosis von Konrad Iturbe (MIT-Lizenz).</string>
+    <string name="ol_log_setup_ok">Eingerichtet: Heim-WLAN bleibt verbunden</string>
+    <string name="ol_log_setup_unsupported">Dieses Handy kann kein zweites WLAN</string>
+    <string name="ol_log_auto_on">Automatisch eingeschaltet</string>
+    <string name="ol_log_failed">Einschalten fehlgeschlagen</string>
+    <string name="ol_log_off">Ausgeschaltet</string>
+</resources>

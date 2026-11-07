@@ -345,6 +345,9 @@ class MainActivity : AppCompatActivity(), OsmoScanner.Listener, GattClient.Liste
         findViewById<View>(R.id.fabDownload).setOnClickListener { onDownloadClicked() }
         findViewById<View>(R.id.fabDelete).setOnClickListener { onBulkDeleteClicked() }
         wireGalleryChips()
+        findViewById<View>(R.id.dualWifiBanner).setOnClickListener {
+            startActivity(android.content.Intent(this, de.druomi.osmolink.ui.DualWifiActivity::class.java))
+        }
         // "Save logs" button (checkable outlined pill) → persist all log lines to a rotating .log file in
         // external files dir.
         val prefs = getSharedPreferences("osmosis", MODE_PRIVATE)
@@ -450,6 +453,17 @@ class MainActivity : AppCompatActivity(), OsmoScanner.Listener, GattClient.Liste
      * A launcher App Shortcut was tapped while we were already running (singleTop). Tear down any live
      * session, return to the selector, and connect to the chosen camera by MAC — see [CameraShortcuts].
      */
+    override fun onResume() {
+        super.onResume()
+        // OsmoLink: refresh the "keep home Wi-Fi" banner (and retry it in the background if it's off).
+        val (ok, res) = de.druomi.osmolink.ui.DualWifiStatus.summary(this)
+        findViewById<android.widget.TextView>(R.id.dualWifiBanner).apply {
+            setText(res)
+            setTextColor(androidx.core.content.ContextCompat.getColor(context, if (ok) R.color.osmo_green else R.color.osmo_ink))
+        }
+        de.druomi.osmolink.ui.DualWifiStatus.kick(this)
+    }
+
     override fun onNewIntent(intent: android.content.Intent) {
         super.onNewIntent(intent)
         setIntent(intent)

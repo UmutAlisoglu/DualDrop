@@ -35,6 +35,19 @@
             tools:visibility="visible"
             tools:text="GPS sync active with OsmoNano-5A31\nMedia browsing is disabled while GPS is streaming. Tap this banner to stop." />
 
+        <!-- OsmoLink: "keep home Wi-Fi" status; tap opens the setup screen. -->
+        <TextView
+            android:id="@+id/dualWifiBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/camera_row_bg"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="12dp"
+            android:textColor="@color/osmo_ink"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

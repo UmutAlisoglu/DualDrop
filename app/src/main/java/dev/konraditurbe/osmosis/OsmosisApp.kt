@@ -13,5 +13,8 @@ class OsmosisApp : Application() {
     override fun onCreate() {
         super.onCreate()
         DynamicColors.applyToActivitiesIfAvailable(this)
+        // OsmoLink: notification channels + re-apply "keep home Wi-Fi" if it got lost (e.g. reboot).
+        de.druomi.osmolink.Channels.init(this)
+        de.druomi.osmolink.ui.DualWifiStatus.kick(this)
     }
 }

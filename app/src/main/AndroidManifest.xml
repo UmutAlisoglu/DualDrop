@@ -27,6 +27,13 @@
         android:usesPermissionFlags="neverForLocation"
         tools:targetApi="tiramisu" />
 
+    <!-- OsmoLink: "keep home Wi-Fi". Re-apply the dual Wi-Fi flag after a reboot, and let the app switch
+         Wireless debugging on/off by itself (WRITE_SECURE_SETTINGS is granted to itself over adb during setup). -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
     <uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
 
     <application
@@ -54,6 +61,29 @@
             android:name=".ui.MediaPreviewActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:exported="false" />
+        <activity
+            android:name="de.druomi.osmolink.ui.DualWifiActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <service
+            android:name="de.druomi.osmolink.adb.PairingService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="One-time setup: pairing with this device's own Wireless debugging service" />
+        </service>
+        <receiver
+            android:name="de.druomi.osmolink.adb.PairingService$CodeReceiver"
+            android:exported="false" />
+        <receiver
+            android:name="de.druomi.osmolink.wifi.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
         <service
             android:name=".rsdk.GpsService"
             android:exported="false"
