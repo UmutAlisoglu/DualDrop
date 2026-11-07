@@ -1,0 +1,80 @@
+name: Compatibility report
+description: Tell us which phone and camera you tried DualDrop with, and what worked. Reports where something failed are just as useful.
+title: "[Compatibility] <phone> + <camera>"
+labels: ["compatibility"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for trying DualDrop! This takes about a minute. Please don't include serial numbers, Wi-Fi passwords or personal photos.
+  - type: input
+    id: phone
+    attributes:
+      label: Phone model
+      description: Settings › About phone, for example "Samsung Galaxy S25 Ultra (SM-S938B)".
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android version
+      description: For example "Android 16 / One UI 8".
+    validations:
+      required: true
+  - type: dropdown
+    id: camera
+    attributes:
+      label: Camera
+      options:
+        - Osmo Action 4
+        - Osmo Action 5 Pro
+        - Osmo Action 6
+        - Osmo Nano
+        - Osmo Pocket 3
+        - Osmo Pocket 4
+        - Other (write it below)
+    validations:
+      required: true
+  - type: input
+    id: camera_firmware
+    attributes:
+      label: Camera firmware (if you know it)
+  - type: input
+    id: dualdrop_version
+    attributes:
+      label: DualDrop version
+      description: Shown in the app, or the name of the .apk you installed, for example 0.2.1.
+    validations:
+      required: true
+  - type: dropdown
+    id: browse
+    attributes:
+      label: Pairing, browsing and downloading
+      options:
+        - Works
+        - Partly works (explain below)
+        - Doesn't work
+    validations:
+      required: true
+  - type: dropdown
+    id: dual_wifi
+    attributes:
+      label: Keep home Wi-Fi
+      options:
+        - Works (home Wi-Fi and internet stay up while connected to the camera)
+        - DualDrop says "Not supported" on this phone
+        - Setup didn't finish (Wireless debugging pairing failed)
+        - Says "On" but home Wi-Fi still drops
+        - Didn't try it
+    validations:
+      required: true
+  - type: input
+    id: speed
+    attributes:
+      label: Download speed (optional)
+      description: Roughly, if you noticed it, for example "about 15 MB/s".
+  - type: textarea
+    id: notes
+    attributes:
+      label: What happened
+      description: Anything that went wrong or was confusing. Screenshots of error messages help.

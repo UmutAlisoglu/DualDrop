@@ -8,6 +8,8 @@ DualDrop is a free Android app. It connects to your camera, shows everything on 
 
 > DualDrop is an independent, unofficial app. It is not made by DJI and not affiliated with DJI. See [Disclaimer](#disclaimer).
 
+> **Status: experiment.** DualDrop is my Android side project. It is native because the phone talks straight to the camera over Bluetooth and Wi-Fi. The "keep home Wi-Fi" feature is confirmed on **one** phone and camera pair so far (Galaxy S25 Ultra + Osmo Action 4) and needs a one-time Wireless debugging setup. If you try it, please [send a compatibility report](https://github.com/UmutAlisoglu/DualDrop/issues/new?template=compatibility-report.yml), whether it worked or not.
+
 ---
 
 ## Contents
@@ -18,6 +20,7 @@ DualDrop is a free Android app. It connects to your camera, shows everything on 
 - [Connect your camera](#connect-your-camera)
 - [Download photos and videos](#download-photos-and-videos)
 - [Keep your home Wi-Fi (optional)](#keep-your-home-wi-fi-optional)
+- [Compatibility](#compatibility)
 - [Questions and answers](#questions-and-answers)
 - [Something isn't working](#something-isnt-working)
 - [Privacy](#privacy)
@@ -33,7 +36,7 @@ DualDrop is a free Android app. It connects to your camera, shows everything on 
 - **Browse the camera.** See all photos and videos as a grid, sorted by day.
 - **Pick many at once.** Long-press one item, then tap more, or tap a date to select the whole day. One tap downloads them all into your gallery, with a progress bar.
 - **Preview before you download.** Play a video straight from the camera, trim it, or save a single frame as a photo.
-- **Keeps your home Wi-Fi.** Normally your phone leaves your home Wi-Fi when it joins the camera's Wi-Fi. DualDrop can keep both connected at once, so your internet, messages and music keep working. This works on many newer phones, for example the Samsung Galaxy S25 series. DualDrop checks your phone and tells you if it can't.
+- **Keeps your home Wi-Fi.** Normally your phone leaves your home Wi-Fi when it joins the camera's Wi-Fi. DualDrop can keep both connected at once, so your internet, messages and music keep working. It should work on phones whose Wi-Fi chip can hold two connections. So far it is confirmed on a Samsung Galaxy S25 Ultra; see [Compatibility](#compatibility). DualDrop checks your phone and tells you if it can't.
 - **Set it up once.** The Wi-Fi feature is set up inside the app in about two minutes. No computer, no root, no extra apps. After a restart it switches itself back on automatically.
 
 ## What you need
@@ -104,6 +107,18 @@ Tested on a Samsung Galaxy S25 Ultra (Android 17 / One UI 9) with an Osmo Action
 
 </details>
 
+## Compatibility
+
+DualDrop has been tested on very few devices so far. Every report helps, especially "it didn't work".
+
+| Phone | Android | Camera | Browse + download | Keep home Wi-Fi |
+|---|---|---|---|---|
+| Samsung Galaxy S25 Ultra | 17 (One UI 9) | Osmo Action 4 | ✅ Works (about 17 MB/s) | ✅ Works |
+
+Other cameras supported by [Osmosis](docs/OSMOSIS_README.md#supported-cameras) (Osmo Action 5 Pro, Action 6, Osmo Nano, Osmo Pocket 3 / 4) are expected to work for browsing and downloading, but haven't been tested with DualDrop yet.
+
+**Tried it?** [Send a compatibility report](https://github.com/UmutAlisoglu/DualDrop/issues/new?template=compatibility-report.yml). It takes about a minute: phone model, Android version, camera, and what worked. Confirmed reports are added to the table above.
+
 ## Questions and answers
 
 **Is DualDrop free?**
@@ -119,7 +134,7 @@ Not for browsing and downloading. You may still want Mimo for firmware updates o
 Yes. Downloading from the camera only uses the camera's own Wi-Fi and Bluetooth. Switch Bluetooth and Wi-Fi back on after enabling airplane mode.
 
 **Does it work with my phone?**
-The camera part works on most Android 10+ phones. For the "keep home Wi-Fi" feature, just try the setup: DualDrop checks your phone and tells you clearly if it isn't supported. Tested so far on a Samsung Galaxy S25 Ultra.
+The camera part works on most Android 10+ phones. For the "keep home Wi-Fi" feature, just try the setup: DualDrop checks your phone and tells you clearly if it isn't supported. Tested so far on a Samsung Galaxy S25 Ultra. See [Compatibility](#compatibility), and please add your phone with a [compatibility report](https://github.com/UmutAlisoglu/DualDrop/issues/new?template=compatibility-report.yml).
 
 **Does it work on iPhone?**
 No, DualDrop is Android only.
