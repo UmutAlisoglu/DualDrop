@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Osmosis palette — matches the Status Pill design (warm cream page, white cards, teal accent). -->
-    <color name="osmo_bg">#F4F1EB</color>
+    <color name="osmo_bg">#F4F6F9</color>
     <color name="osmo_surface">#FFFFFF</color>
-    <color name="osmo_surface_dim">#ECE7DE</color>
-    <color name="osmo_ink">#2B2722</color>
-    <color name="osmo_muted">#8C867D</color>
-    <color name="osmo_accent">#00838F</color>
+    <color name="osmo_surface_dim">#E9EDF2</color>
+    <color name="osmo_ink">#0E1620</color>
+    <color name="osmo_muted">#667383</color>
+    <color name="osmo_accent">#0A8F87</color>
     <color name="osmo_on_accent">#FFFFFF</color>
-    <color name="osmo_green">#52B788</color>
-    <color name="osmo_track">#E2DCD2</color>
-    <color name="osmo_danger">#C62828</color>
-    <color name="osmo_amber">#B26A00</color>
+    <color name="osmo_green">#14A36B</color>
+    <color name="osmo_track">#D9E0E8</color>
+    <color name="osmo_danger">#D64545</color>
+    <color name="osmo_amber">#C27C0E</color>
     <color name="white">#FFFFFF</color>
 
     <!-- Status-pill semantic indicators (battery / storage). Fixed hues (not brand accent), with a
@@ -24,7 +24,7 @@
     <color name="osmo_action_live">#5E4B8B</color>
     <color name="osmo_action_gps">#1F6587</color>
     <color name="osmo_action_delete">#A4403A</color>
-    <color name="osmo_swipe_well">#DDD6CB</color>
+    <color name="osmo_swipe_well">#DCE2E9</color>
     <!-- The LIVE tag on a streaming camera's row: a bright red under white text, both themes. -->
     <color name="osmo_live">#D32F2F</color>
 </resources>

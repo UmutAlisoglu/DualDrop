@@ -5,7 +5,7 @@
 
     <string name="ol_title">Keep home Wi-Fi</string>
     <string name="ol_intro">Normally your phone drops your home Wi-Fi as soon as it connects to the camera. OsmoLink can switch that off so both connections stay up at the same time, and your internet keeps working while you browse and download.</string>
-    <string name="ol_status_active">✓ On. Your home Wi-Fi stays connected while the camera is connected.</string>
+    <string name="ol_status_active">Your home Wi-Fi stays connected while the camera is connected.</string>
     <string name="ol_status_unsupported">Your phone cannot hold two Wi-Fi connections at once. OsmoLink still works, but your home Wi-Fi will disconnect while the camera is connected.</string>
     <string name="ol_status_old_android">This needs Android 11 or newer. OsmoLink still works, but your home Wi-Fi will disconnect while the camera is connected.</string>
     <string name="ol_status_paired_off">Currently off (for example after a restart). It switches itself back on as soon as your phone is on Wi-Fi.</string>
@@ -52,15 +52,29 @@
 
     <string name="ol_lost_title">Home Wi-Fi will disconnect</string>
     <string name="ol_lost_text">Tap so OsmoLink can switch \"Keep home Wi-Fi\" back on</string>
-
-    <string name="ol_banner_active">✓ Home Wi-Fi stays connected</string>
-    <string name="ol_banner_setup">Keep your home Wi-Fi while connected to the camera: tap to set up</string>
-    <string name="ol_banner_paired_off">\"Keep home Wi-Fi\" is off right now: tap to switch on</string>
-    <string name="ol_banner_unsupported">Your home Wi-Fi disconnects while the camera is connected (phone not supported)</string>
     <string name="ol_about_credit">OsmoLink is based on Osmosis by Konrad Iturbe (MIT licence).</string>
     <string name="ol_log_setup_ok">Set up: home Wi-Fi stays connected</string>
     <string name="ol_log_setup_unsupported">This phone cannot hold a second Wi-Fi</string>
     <string name="ol_log_auto_on">Switched on automatically</string>
     <string name="ol_log_failed">Switching on failed</string>
     <string name="ol_log_off">Switched off</string>
+    <string name="ol_intro_short">Stay online on your home Wi-Fi while your phone is connected to the camera.</string>
+    <string name="ol_chip_on">On</string>
+    <string name="ol_chip_off">Off right now</string>
+    <string name="ol_chip_unsupported">Not supported</string>
+    <string name="ol_chip_setup">Not set up</string>
+    <string name="ol_section_setup">One-time setup</string>
+    <string name="ol_section_details">Details</string>
+    <string name="ol_detail_last">Last action</string>
+    <string name="ol_detail_auto">After a restart</string>
+    <string name="ol_back">Back</string>
+    <string name="ol_footer">OsmoLink is based on Osmosis by Konrad Iturbe (MIT licence). Not affiliated with or endorsed by DJI.</string>
+    <string name="ol_banner_active">Home Wi-Fi stays connected</string>
+    <string name="ol_banner_active_sub">Internet keeps working while the camera is connected</string>
+    <string name="ol_banner_setup">Keep your home Wi-Fi</string>
+    <string name="ol_banner_setup_sub">One-time setup, about 2 minutes</string>
+    <string name="ol_banner_paired_off">Keep home Wi-Fi is off</string>
+    <string name="ol_banner_paired_off_sub">Tap to switch it back on</string>
+    <string name="ol_banner_unsupported">Home Wi-Fi will disconnect</string>
+    <string name="ol_banner_unsupported_sub">This phone can\'t hold two Wi-Fi connections</string>
 </resources>

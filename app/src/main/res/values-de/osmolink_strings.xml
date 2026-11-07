@@ -5,7 +5,7 @@
 
     <string name="ol_title">Heim-WLAN behalten</string>
     <string name="ol_intro">Normalerweise trennt sich dein Handy vom Heim-WLAN, sobald es sich mit der Kamera verbindet. OsmoLink kann das abschalten: Dann bleiben beide Verbindungen gleichzeitig bestehen, und dein Internet funktioniert weiter, während du Fotos und Videos ansiehst und herunterlädst.</string>
-    <string name="ol_status_active">✓ Aktiv. Dein Heim-WLAN bleibt verbunden, während die Kamera verbunden ist.</string>
+    <string name="ol_status_active">Dein Heim-WLAN bleibt verbunden, während die Kamera verbunden ist.</string>
     <string name="ol_status_unsupported">Dein Handy kann leider keine zwei WLAN-Verbindungen gleichzeitig halten. OsmoLink funktioniert trotzdem, aber dein Heim-WLAN wird getrennt, solange die Kamera verbunden ist.</string>
     <string name="ol_status_old_android">Dafür ist Android 11 oder neuer nötig. OsmoLink funktioniert trotzdem, aber dein Heim-WLAN wird getrennt, solange die Kamera verbunden ist.</string>
     <string name="ol_status_paired_off">Gerade aus (zum Beispiel nach einem Neustart). Schaltet sich von selbst wieder ein, sobald dein Handy mit einem WLAN verbunden ist.</string>
@@ -52,15 +52,29 @@
 
     <string name="ol_lost_title">Heim-WLAN würde getrennt</string>
     <string name="ol_lost_text">Tippe hier, damit OsmoLink „Heim-WLAN behalten“ wieder einschaltet</string>
-
-    <string name="ol_banner_active">✓ Heim-WLAN bleibt verbunden</string>
-    <string name="ol_banner_setup">Heim-WLAN behalten, während die Kamera verbunden ist: hier einrichten</string>
-    <string name="ol_banner_paired_off">„Heim-WLAN behalten“ ist gerade aus: hier einschalten</string>
-    <string name="ol_banner_unsupported">Dein Heim-WLAN wird getrennt, solange die Kamera verbunden ist (Handy nicht unterstützt)</string>
     <string name="ol_about_credit">OsmoLink basiert auf Osmosis von Konrad Iturbe (MIT-Lizenz).</string>
     <string name="ol_log_setup_ok">Eingerichtet: Heim-WLAN bleibt verbunden</string>
     <string name="ol_log_setup_unsupported">Dieses Handy kann kein zweites WLAN</string>
     <string name="ol_log_auto_on">Automatisch eingeschaltet</string>
     <string name="ol_log_failed">Einschalten fehlgeschlagen</string>
     <string name="ol_log_off">Ausgeschaltet</string>
+    <string name="ol_intro_short">Bleib im Heim-WLAN online, während dein Handy mit der Kamera verbunden ist.</string>
+    <string name="ol_chip_on">Aktiv</string>
+    <string name="ol_chip_off">Gerade aus</string>
+    <string name="ol_chip_unsupported">Nicht unterstützt</string>
+    <string name="ol_chip_setup">Nicht eingerichtet</string>
+    <string name="ol_section_setup">Einmalige Einrichtung</string>
+    <string name="ol_section_details">Details</string>
+    <string name="ol_detail_last">Zuletzt</string>
+    <string name="ol_detail_auto">Nach einem Neustart</string>
+    <string name="ol_back">Zurück</string>
+    <string name="ol_footer">OsmoLink basiert auf Osmosis von Konrad Iturbe (MIT-Lizenz). Nicht mit DJI verbunden oder von DJI unterstützt.</string>
+    <string name="ol_banner_active">Heim-WLAN bleibt verbunden</string>
+    <string name="ol_banner_active_sub">Internet läuft weiter, während die Kamera verbunden ist</string>
+    <string name="ol_banner_setup">Heim-WLAN behalten</string>
+    <string name="ol_banner_setup_sub">Einmalige Einrichtung, etwa 2 Minuten</string>
+    <string name="ol_banner_paired_off">Heim-WLAN behalten ist aus</string>
+    <string name="ol_banner_paired_off_sub">Tippen, um es wieder einzuschalten</string>
+    <string name="ol_banner_unsupported">Heim-WLAN wird getrennt</string>
+    <string name="ol_banner_unsupported_sub">Dieses Handy kann keine zwei WLAN-Verbindungen halten</string>
 </resources>

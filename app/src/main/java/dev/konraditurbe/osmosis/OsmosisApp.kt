@@ -1,7 +1,6 @@
 package dev.konraditurbe.osmosis
 
 import android.app.Application
-import com.google.android.material.color.DynamicColors
 
 /**
  * Applies Material You **dynamic color** to every Activity on Android 12+ (API 31), so the app's accent,
@@ -12,7 +11,7 @@ import com.google.android.material.color.DynamicColors
 class OsmosisApp : Application() {
     override fun onCreate() {
         super.onCreate()
-        DynamicColors.applyToActivitiesIfAvailable(this)
+        // OsmoLink: fixed brand palette (no Material You dynamic colour) for a consistent look.
         // OsmoLink: notification channels + re-apply "keep home Wi-Fi" if it got lost (e.g. reboot).
         de.druomi.osmolink.Channels.init(this)
         de.druomi.osmolink.ui.DualWifiStatus.kick(this)

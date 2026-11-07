@@ -1,0 +1,7 @@
+<!-- Two Wi-Fi fans side by side: home network + camera, both connected. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="40dp" android:height="40dp" android:viewportWidth="40" android:viewportHeight="40">
+    <path android:fillColor="#00000000" android:strokeColor="#FFFFFF" android:strokeWidth="2.6" android:strokeLineCap="round" android:pathData="M3,19 a12,12 0 0,1 15,0 M6.2,23 a7,7 0 0,1 8.6,0" />
+    <path android:fillColor="#FFFFFF" android:pathData="M10.5,26.2 a1.8,1.8 0 1,0 0.01,0z" />
+    <path android:fillColor="#00000000" android:strokeColor="#FFFFFF" android:strokeWidth="2.6" android:strokeLineCap="round" android:pathData="M22,19 a12,12 0 0,1 15,0 M25.2,23 a7,7 0 0,1 8.6,0" />
+    <path android:fillColor="#FFFFFF" android:pathData="M29.5,26.2 a1.8,1.8 0 1,0 0.01,0z" />
+</vector>

@@ -8,6 +8,12 @@
         <item name="colorPrimaryContainer">@color/osmo_accent</item>
         <item name="colorOnPrimaryContainer">@color/osmo_on_accent</item>
         <item name="colorSecondary">@color/osmo_accent</item>
+        <!-- OsmoLink: tonal buttons/chips on neutral surfaces instead of the generated purple-ish tone. -->
+        <item name="colorSecondaryContainer">@color/osmo_surface_dim</item>
+        <item name="colorOnSecondaryContainer">@color/osmo_ink</item>
+        <item name="colorTertiary">@color/osmo_accent</item>
+        <item name="colorSurfaceContainer">@color/osmo_surface</item>
+        <item name="colorSurfaceContainerHigh">@color/osmo_surface_dim</item>
 
         <item name="android:colorBackground">@color/osmo_bg</item>
         <item name="colorSurface">@color/osmo_surface</item>

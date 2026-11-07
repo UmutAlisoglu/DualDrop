@@ -456,11 +456,15 @@ class MainActivity : AppCompatActivity(), OsmoScanner.Listener, GattClient.Liste
     override fun onResume() {
         super.onResume()
         // OsmoLink: refresh the "keep home Wi-Fi" banner (and retry it in the background if it's off).
-        val (ok, res) = de.druomi.osmolink.ui.DualWifiStatus.summary(this)
-        findViewById<android.widget.TextView>(R.id.dualWifiBanner).apply {
-            setText(res)
-            setTextColor(androidx.core.content.ContextCompat.getColor(context, if (ok) R.color.osmo_green else R.color.osmo_ink))
-        }
+        val st = de.druomi.osmolink.ui.DualWifiStatus.summary(this)
+        findViewById<android.widget.TextView>(R.id.dualWifiTitle).setText(st.title)
+        findViewById<android.widget.TextView>(R.id.dualWifiSubtitle).setText(st.subtitle)
+        val badgeColor = androidx.core.content.ContextCompat.getColor(this, when (st.level) {
+            de.druomi.osmolink.ui.DualWifiStatus.Level.OK -> R.color.osmo_green
+            de.druomi.osmolink.ui.DualWifiStatus.Level.ACTION -> R.color.osmo_accent
+            de.druomi.osmolink.ui.DualWifiStatus.Level.INFO -> R.color.osmo_muted
+        })
+        findViewById<View>(R.id.dualWifiBadge).backgroundTintList = android.content.res.ColorStateList.valueOf(badgeColor)
         de.druomi.osmolink.ui.DualWifiStatus.kick(this)
     }
 
