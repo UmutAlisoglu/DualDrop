@@ -1,4 +1,4 @@
-# OsmoLink – Notizen für später (Bauen, Updaten, Veröffentlichen)
+# DualDrop – Notizen für später (Bauen, Updaten, Veröffentlichen)
 
 Stand: 2026-11-07. Diese Datei ist für Druomi und für jeden Claude, der hier weitermacht.
 
@@ -6,12 +6,12 @@ Stand: 2026-11-07. Diese Datei ist für Druomi und für jeden Claude, der hier w
 
 | Was | Wo |
 |---|---|
-| Quellcode (git, Branch `osmolink`) | `Desktop\Projects\osmo-action4-research\OsmoLink` |
+| Quellcode (git, Branch `osmolink`) | `Desktop\Projects\osmo-action4-research\DualDrop` |
 | Upstream (Osmosis) | git-Remote `upstream` = https://github.com/KonradIT/Osmosis |
-| OsmoLink-eigener Code | `app/src/main/java/de/druomi/osmolink/` (+ `res/values*/osmolink_strings.xml`, `res/drawable/ol_*`) |
+| DualDrop-eigener Code | `app/src/main/java/de/druomi/osmolink/` (+ `res/values*/osmolink_strings.xml`, `res/drawable/ol_*`) |
 | **Signatur-Schlüssel (sichern!)** | `Desktop\Projects\osmo-action4-research\osmolink-release.jks` |
-| **Passwörter zum Schlüssel (sichern!)** | `OsmoLink\keystore.properties` (nicht in git) |
-| Fertige APK | `OsmoLink\app\build\outputs\apk\release\app-release.apk` |
+| **Passwörter zum Schlüssel (sichern!)** | `DualDrop\keystore.properties` (nicht in git) |
+| Fertige APK | `DualDrop\app\build\outputs\apk\release\app-release.apk` |
 | Forschung, Bericht | https://claude.ai/artifact/5HCyjri1o1M6xv4eX4Mtip |
 
 Ohne `osmolink-release.jks` + Passwörter kann niemand ein Update bauen, das sich über die installierte App installieren lässt. Beides z. B. in einen Passwort-Manager oder auf einen USB-Stick kopieren.
@@ -21,7 +21,7 @@ Ohne `osmolink-release.jks` + Passwörter kann niemand ein Update bauen, das sic
 Voraussetzungen auf dem PC (alles schon installiert): JDK 17 (`C:\Program Files\Eclipse Adoptium\jdk-17*`), Android SDK unter `%LOCALAPPDATA%\Android\Sdk` (platforms 35 + 36, build-tools 35/36), adb.
 
 ```bash
-cd ~/Desktop/Projects/osmo-action4-research/OsmoLink
+cd ~/Desktop/Projects/osmo-action4-research/DualDrop
 export JAVA_HOME="/c/Program Files/Eclipse Adoptium/jdk-17.0.21.9-hotspot"
 ./gradlew assembleRelease
 adb install -r app/build/outputs/apk/release/app-release.apk
@@ -36,7 +36,7 @@ git fetch upstream
 git merge upstream/main      # Konflikte meist nur in MainActivity.kt, activity_main.xml, build.gradle, AndroidManifest.xml
 ```
 
-Unsere Änderungen an Osmosis-Dateien sind klein und mit `OsmoLink:` kommentiert (Suche danach).
+Unsere Änderungen an Osmosis-Dateien sind klein und mit `DualDrop:` kommentiert (Suche danach).
 
 ## Wie „Heim-WLAN behalten" funktioniert
 
@@ -56,7 +56,7 @@ Unsere Änderungen an Osmosis-Dateien sind klein und mit `OsmoLink:` kommentiert
 - → Vor Veröffentlichung: Datei `THIRD_PARTY_NOTICES.md` mit allen Lizenzen beilegen und in der App verlinken.
 
 **Marke „Osmo"/„DJI":**
-- „OSMO" ist eine eingetragene Marke von DJI (u. a. USPTO Nr. 86700744, „OSMO ACTION" 88379274). Ein App-Name, der „Osmo" enthält (OsmoLink), kann als Markenverletzung oder Verwechslungsgefahr gewertet werden, vor allem im Play Store.
+- „OSMO" ist eine eingetragene Marke von DJI (u. a. USPTO Nr. 86700744, „OSMO ACTION" 88379274). Ein App-Name, der „Osmo" enthält (DualDrop), kann als Markenverletzung oder Verwechslungsgefahr gewertet werden, vor allem im Play Store.
 - Beschreibende Nennung ist erlaubt („funktioniert mit DJI Osmo Action 4"), solange kein DJI-Logo verwendet und keine Zugehörigkeit vorgetäuscht wird. Hinweis „Nicht mit DJI verbunden" ist in der App.
 - → Empfehlung: vor einer öffentlichen Veröffentlichung umbenennen (Name ohne „Osmo"/„DJI").
 

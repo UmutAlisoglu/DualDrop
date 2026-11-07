@@ -11,8 +11,8 @@ import android.app.Application
 class OsmosisApp : Application() {
     override fun onCreate() {
         super.onCreate()
-        // OsmoLink: fixed brand palette (no Material You dynamic colour) for a consistent look.
-        // OsmoLink: notification channels + re-apply "keep home Wi-Fi" if it got lost (e.g. reboot).
+        // DualDrop: fixed brand palette (no Material You dynamic colour) for a consistent look.
+        // DualDrop: notification channels + re-apply "keep home Wi-Fi" if it got lost (e.g. reboot).
         de.druomi.osmolink.Channels.init(this)
         de.druomi.osmolink.ui.DualWifiStatus.kick(this)
     }

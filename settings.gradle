@@ -10,10 +10,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        // OsmoLink: libadb-android (Wireless-debugging client) is published on JitPack only.
+        // DualDrop: libadb-android (Wireless-debugging client) is published on JitPack only.
         maven { url 'https://jitpack.io'; content { includeGroupByRegex 'com.github.MuntashirAkon.*' } }
     }
 }
 
-rootProject.name = "OsmoLink"
+rootProject.name = "DualDrop"
 include ':app'

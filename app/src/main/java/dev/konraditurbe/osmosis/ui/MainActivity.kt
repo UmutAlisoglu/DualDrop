@@ -455,7 +455,7 @@ class MainActivity : AppCompatActivity(), OsmoScanner.Listener, GattClient.Liste
      */
     override fun onResume() {
         super.onResume()
-        // OsmoLink: refresh the "keep home Wi-Fi" banner (and retry it in the background if it's off).
+        // DualDrop: refresh the "keep home Wi-Fi" banner (and retry it in the background if it's off).
         val st = de.druomi.osmolink.ui.DualWifiStatus.summary(this)
         findViewById<android.widget.TextView>(R.id.dualWifiTitle).setText(st.title)
         findViewById<android.widget.TextView>(R.id.dualWifiSubtitle).setText(st.subtitle)
@@ -1607,13 +1607,40 @@ class MainActivity : AppCompatActivity(), OsmoScanner.Listener, GattClient.Liste
         chipPhotos.setOnClickListener { if (chipPhotos.isChecked) chipVideos.isChecked = false; applyChipsToAdapter() }
         chipVideos.setOnClickListener { if (chipVideos.isChecked) chipPhotos.isChecked = false; applyChipsToAdapter() }
         chipFaved.setOnClickListener { adapter?.setFavedOnly(chipFaved.isChecked) }
-        chipSelect.setOnClickListener { adapter?.setSelectMode(chipSelect.isChecked); updateDownloadFab() }
+        chipSelect.setOnClickListener { setSelectMode(chipSelect.isChecked) }
+        // DualDrop: selection bar actions.
+        findViewById<View>(R.id.btnSelectionClose).setOnClickListener { setSelectMode(false) }
+        findViewById<View>(R.id.btnSelectAll).setOnClickListener {
+            val ad = adapter ?: return@setOnClickListener
+            ad.selectAllVisible(!ad.allVisibleSelected())
+        }
         chipSelect.setOnLongClickListener {
             val ad = adapter ?: return@setOnLongClickListener true
             if (!chipSelect.isChecked) { chipSelect.isChecked = true; ad.setSelectMode(true) }
             ad.selectAllVisible(ad.selectedCount() == 0)   // nothing queued → select all visible, else clear
             true
         }
+    }
+
+    /** DualDrop: one place to switch Select mode (chip, selection bar, long-press). */
+    private fun setSelectMode(on: Boolean) {
+        chipSelect.isChecked = on
+        adapter?.setSelectMode(on)
+        updateDownloadFab()
+    }
+
+    /** DualDrop: selection bar visibility, count and the "Select all" / "Clear" label. */
+    private fun updateSelectionBar() {
+        val bar = findViewById<View>(R.id.selectionBar) ?: return
+        val on = ::chipSelect.isInitialized && chipSelect.isChecked
+        bar.visibility = if (on) View.VISIBLE else View.GONE
+        if (!on) return
+        val ad = adapter
+        val n = ad?.selectedCount() ?: 0
+        findViewById<android.widget.TextView>(R.id.selectionCount).text =
+            if (n == 0) getString(R.string.ol_sel_none_yet) else resources.getQuantityString(R.plurals.ol_sel_count, n, n)
+        findViewById<MaterialButton>(R.id.btnSelectAll).setText(
+            if (ad?.allVisibleSelected() == true) R.string.ol_sel_clear else R.string.ol_sel_all)
     }
 
     /** Reflect the queued count on the Download FAB: "Download", "Download (1)", "Download (2)", … */
@@ -1631,6 +1658,7 @@ class MainActivity : AppCompatActivity(), OsmoScanner.Listener, GattClient.Liste
                 isEnabled = !downloadRunning
             }
         updateBulkDeleteFab()
+        updateSelectionBar()
     }
 
     /**
@@ -1850,6 +1878,9 @@ class MainActivity : AppCompatActivity(), OsmoScanner.Listener, GattClient.Liste
      * these on the grid (not the preview) means the preview never touches the datalink.
      */
     private fun onGridLongPress(f: CameraFile) {
+        // DualDrop: long-press starts multi-select with this item (gallery-app convention). In select mode
+        // it still opens the favourite / delete menu.
+        if (!chipSelect.isChecked) { setSelectMode(true); adapter?.selectFile(f); return }
         val dl = datalink ?: run { logLine("Long-press: no live datalink session."); toast(getString(R.string.not_connected)); return }
         val fav = getString(if (f.starred) R.string.unfavorite else R.string.favorite)
         val del = getString(R.string.delete)
@@ -2083,6 +2114,21 @@ class MainActivity : AppCompatActivity(), OsmoScanner.Listener, GattClient.Liste
                     overallText.text = getString(R.string.download_done, saved, skipped, failed)
                     fileText.text = ""
                     main.postDelayed({ progressArea.visibility = View.INVISIBLE }, 3000)
+                    // DualDrop: clear confirmation with a shortcut to the phone's gallery.
+                    if (saved + skipped > 0) {
+                        if ((adapter?.selectedCount() ?: 0) == 0) setSelectMode(false)
+                        com.google.android.material.snackbar.Snackbar.make(grid,
+                            resources.getQuantityString(R.plurals.ol_dl_saved, saved + skipped, saved + skipped),
+                            com.google.android.material.snackbar.Snackbar.LENGTH_LONG)
+                            .setAction(R.string.ol_open_gallery) {
+                                runCatching {
+                                    startActivity(android.content.Intent(android.content.Intent.ACTION_MAIN)
+                                        .addCategory(android.content.Intent.CATEGORY_APP_GALLERY)
+                                        .addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK))
+                                }
+                            }
+                            .show()
+                    }
                 }
                 logLine("DONE: $saved saved, $skipped skipped, $failed failed")
             }

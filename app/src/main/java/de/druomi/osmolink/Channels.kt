@@ -5,7 +5,7 @@ import android.app.NotificationManager
 import android.content.Context
 import dev.konraditurbe.osmosis.R
 
-/** OsmoLink additions on top of Osmosis: notification channels. */
+/** DualDrop additions on top of Osmosis: notification channels. */
 object Channels {
     const val SETUP = "ol_setup"
     const val STATUS = "ol_status"

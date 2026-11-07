@@ -27,7 +27,7 @@
         android:usesPermissionFlags="neverForLocation"
         tools:targetApi="tiramisu" />
 
-    <!-- OsmoLink: "keep home Wi-Fi". Re-apply the dual Wi-Fi flag after a reboot, and let the app switch
+    <!-- DualDrop: "keep home Wi-Fi". Re-apply the dual Wi-Fi flag after a reboot, and let the app switch
          Wireless debugging on/off by itself (WRITE_SECURE_SETTINGS is granted to itself over adb during setup). -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />

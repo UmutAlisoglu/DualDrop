@@ -1,22 +1,22 @@
-# OsmoLink
+# DualDrop
 
 **One simple app for DJI Osmo cameras that replaces DJI Mimo, and keeps your phone on your home Wi-Fi while it talks to the camera.**
 
-OsmoLink is a fork of [Osmosis](https://github.com/KonradIT/Osmosis) by Konrad Iturbe (MIT licence), which does all the camera work: Bluetooth pairing and wake, browsing, previewing and downloading photos and videos over the camera's Wi-Fi. OsmoLink adds one thing on top:
+DualDrop is a fork of [Osmosis](https://github.com/KonradIT/Osmosis) by Konrad Iturbe (MIT licence), which does all the camera work: Bluetooth pairing and wake, browsing, previewing and downloading photos and videos over the camera's Wi-Fi. DualDrop adds one thing on top:
 
 ### Keep home Wi-Fi ("Heim-WLAN behalten")
 
-Normally a phone drops its home Wi-Fi as soon as it joins the camera's hotspot. Many phones (for example the Samsung Galaxy S25 Ultra) have a Wi-Fi chip that can hold a second, local-only connection, but ship the Android setting that allows it switched off. OsmoLink switches it on:
+Normally a phone drops its home Wi-Fi as soon as it joins the camera's hotspot. Many phones (for example the Samsung Galaxy S25 Ultra) have a Wi-Fi chip that can hold a second, local-only connection, but ship the Android setting that allows it switched off. DualDrop switches it on:
 
-- **One-time setup in the app, no PC, no root, no Shizuku.** OsmoLink pairs with the phone's own *Wireless debugging* (you type a 6-digit code into a notification), grants itself the rights it needs, and checks whether your phone's Wi-Fi chip supports two connections.
-- **Survives reboots.** The setting resets on every restart; OsmoLink re-applies it automatically about 15 to 45 seconds after boot, as soon as the phone is on Wi-Fi, and switches Wireless debugging off again afterwards.
-- **Compatibility check.** If your phone can't do it, OsmoLink says so plainly and still works like Osmosis (home Wi-Fi drops while the camera is connected).
+- **One-time setup in the app, no PC, no root, no Shizuku.** DualDrop pairs with the phone's own *Wireless debugging* (you type a 6-digit code into a notification), grants itself the rights it needs, and checks whether your phone's Wi-Fi chip supports two connections.
+- **Survives reboots.** The setting resets on every restart; DualDrop re-applies it automatically about 15 to 45 seconds after boot, as soon as the phone is on Wi-Fi, and switches Wireless debugging off again afterwards.
+- **Compatibility check.** If your phone can't do it, DualDrop says so plainly and still works like Osmosis (home Wi-Fi drops while the camera is connected).
 
 Tested on a Galaxy S25 Ultra (Android 17 / One UI 9) with an Osmo Action 4: home Wi-Fi and internet stayed up while browsing and downloading from the camera at about 17 MB/s.
 
 The technical background: the app runs `cmd wifi force-overlay-config-value bool config_wifiMultiStaLocalOnlyConcurrencyEnabled enabled true` over a local adb connection. Requires Android 11+ (Wireless debugging) and Developer options.
 
-**Deutsch:** OsmoLink ersetzt DJI Mimo und hält dein Handy mit dem Heim-WLAN verbunden, während es mit der Kamera verbunden ist. Einmalige Einrichtung direkt in der App (ohne PC, ohne Root), danach läuft alles automatisch, auch nach Neustarts.
+**Deutsch:** DualDrop ersetzt DJI Mimo und hält dein Handy mit dem Heim-WLAN verbunden, während es mit der Kamera verbunden ist. Einmalige Einrichtung direkt in der App (ohne PC, ohne Root), danach läuft alles automatisch, auch nach Neustarts.
 
 ---
 

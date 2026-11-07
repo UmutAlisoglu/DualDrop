@@ -37,7 +37,7 @@ class AdbManager private constructor(ctx: Context) : AbsAdbConnectionManager() {
         } else {
             val kpg = KeyPairGenerator.getInstance("RSA").apply { initialize(2048) }
             val kp = kpg.generateKeyPair()
-            val name = X500Name("CN=OsmoLink")
+            val name = X500Name("CN=DualDrop")
             val now = System.currentTimeMillis()
             val builder = JcaX509v3CertificateBuilder(
                 name, BigInteger.valueOf(now), Date(now - 86_400_000L),
@@ -53,7 +53,7 @@ class AdbManager private constructor(ctx: Context) : AbsAdbConnectionManager() {
 
     override fun getPrivateKey(): PrivateKey = key
     override fun getCertificate(): Certificate = cert
-    override fun getDeviceName(): String = "OsmoLink"
+    override fun getDeviceName(): String = "DualDrop"
 
     /** Runs a shell command and returns its combined output. Caller must be connected. */
     fun exec(cmd: String): String {

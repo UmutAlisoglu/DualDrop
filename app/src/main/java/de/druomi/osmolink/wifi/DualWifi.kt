@@ -15,7 +15,7 @@ import dev.konraditurbe.osmosis.R
  * local-only client connection next to the normal one, but ship the Android flag that allows it
  * switched off. With the flag on, joining the camera's Wi-Fi no longer drops home Wi-Fi.
  *
- * The flag can only be set from a shell (adb), and it resets on every reboot. OsmoLink gets that shell
+ * The flag can only be set from a shell (adb), and it resets on every reboot. DualDrop gets that shell
  * from the phone's own Wireless debugging (see [AdbManager]), so no PC, root or Shizuku is needed.
  */
 object DualWifi {

@@ -4,10 +4,10 @@
     <string name="ol_channel_status">Keep home Wi-Fi</string>
 
     <string name="ol_title">Keep home Wi-Fi</string>
-    <string name="ol_intro">Normally your phone drops your home Wi-Fi as soon as it connects to the camera. OsmoLink can switch that off so both connections stay up at the same time, and your internet keeps working while you browse and download.</string>
+    <string name="ol_intro">Normally your phone drops your home Wi-Fi as soon as it connects to the camera. DualDrop can switch that off so both connections stay up at the same time, and your internet keeps working while you browse and download.</string>
     <string name="ol_status_active">Your home Wi-Fi stays connected while the camera is connected.</string>
-    <string name="ol_status_unsupported">Your phone cannot hold two Wi-Fi connections at once. OsmoLink still works, but your home Wi-Fi will disconnect while the camera is connected.</string>
-    <string name="ol_status_old_android">This needs Android 11 or newer. OsmoLink still works, but your home Wi-Fi will disconnect while the camera is connected.</string>
+    <string name="ol_status_unsupported">Your phone cannot hold two Wi-Fi connections at once. DualDrop still works, but your home Wi-Fi will disconnect while the camera is connected.</string>
+    <string name="ol_status_old_android">This needs Android 11 or newer. DualDrop still works, but your home Wi-Fi will disconnect while the camera is connected.</string>
     <string name="ol_status_paired_off">Currently off (for example after a restart). It switches itself back on as soon as your phone is on Wi-Fi.</string>
     <string name="ol_status_not_setup">Not set up yet. One-time setup, takes about 2 minutes.</string>
     <string name="ol_btn_apply">Switch on now</string>
@@ -23,20 +23,20 @@
     <string name="ol_step2_title">Connect to Wi-Fi</string>
     <string name="ol_step2_text">Your phone needs to be on a Wi-Fi network, for example your home Wi-Fi.</string>
     <string name="ol_btn_open_wifi">Open Wi-Fi settings</string>
-    <string name="ol_step3_title">Pair OsmoLink with your phone</string>
-    <string name="ol_step3_text">Tap \"Start\". In the screen that opens:\n1) Switch on \"Wireless debugging\" and tap \"Allow\".\n2) Tap the words \"Wireless debugging\" themselves, then \"Pair device with pairing code\".\n3) Pull down the notification shade. On the OsmoLink notification tap the small arrow, then \"Enter code\", type the 6 digits and send.\nOsmoLink does the rest.</string>
+    <string name="ol_step3_title">Pair DualDrop with your phone</string>
+    <string name="ol_step3_text">Tap \"Start\". In the screen that opens:\n1) Switch on \"Wireless debugging\" and tap \"Allow\".\n2) Tap the words \"Wireless debugging\" themselves, then \"Pair device with pairing code\".\n3) Pull down the notification shade. On the DualDrop notification tap the small arrow, then \"Enter code\", type the 6 digits and send.\nDualDrop does the rest.</string>
     <string name="ol_btn_start_pairing">Start</string>
     <string name="ol_pair_state_searching">⏳ Waiting for \"Pair device with pairing code\"…</string>
-    <string name="ol_pair_state_found">👉 Found. Now enter the 6-digit code in the OsmoLink notification.</string>
+    <string name="ol_pair_state_found">👉 Found. Now enter the 6-digit code in the DualDrop notification.</string>
     <string name="ol_pair_state_failed">✗ Code wrong or expired. Open \"Pair device with pairing code\" again and enter the new code.</string>
     <string name="ol_pair_state_paired">⏳ Paired. Finishing setup…</string>
 
     <string name="ol_last_log">Last action: %1$s</string>
-    <string name="ol_auto_note">After every restart OsmoLink switches this back on by itself once your phone is on Wi-Fi.</string>
+    <string name="ol_auto_note">After every restart DualDrop switches this back on by itself once your phone is on Wi-Fi.</string>
     <string name="ol_btn_off">Switch off</string>
     <string name="ol_btn_reset">Set up again</string>
 
-    <string name="ol_pair_searching_title">OsmoLink setup</string>
+    <string name="ol_pair_searching_title">DualDrop setup</string>
     <string name="ol_pair_searching_text">Tap \"Pair device with pairing code\"</string>
     <string name="ol_pair_found_title">Pairing code found</string>
     <string name="ol_pair_found_text">Tap \"Enter code\" and type the 6 digits</string>
@@ -48,11 +48,11 @@
     <string name="ol_setup_done">✓ Done! Home Wi-Fi now stays connected</string>
     <string name="ol_setup_unsupported">This phone can\'t keep two Wi-Fi connections</string>
     <string name="ol_setup_error">Setup didn\'t finish, please try again</string>
-    <string name="ol_setup_back">Tap to go back to OsmoLink</string>
+    <string name="ol_setup_back">Tap to go back to DualDrop</string>
 
     <string name="ol_lost_title">Home Wi-Fi will disconnect</string>
-    <string name="ol_lost_text">Tap so OsmoLink can switch \"Keep home Wi-Fi\" back on</string>
-    <string name="ol_about_credit">OsmoLink is based on Osmosis by Konrad Iturbe (MIT licence).</string>
+    <string name="ol_lost_text">Tap so DualDrop can switch \"Keep home Wi-Fi\" back on</string>
+    <string name="ol_about_credit">DualDrop is based on Osmosis by Konrad Iturbe (MIT licence).</string>
     <string name="ol_log_setup_ok">Set up: home Wi-Fi stays connected</string>
     <string name="ol_log_setup_unsupported">This phone cannot hold a second Wi-Fi</string>
     <string name="ol_log_auto_on">Switched on automatically</string>
@@ -68,7 +68,7 @@
     <string name="ol_detail_last">Last action</string>
     <string name="ol_detail_auto">After a restart</string>
     <string name="ol_back">Back</string>
-    <string name="ol_footer">OsmoLink is based on Osmosis by Konrad Iturbe (MIT licence). Not affiliated with or endorsed by DJI.</string>
+    <string name="ol_footer">DualDrop is based on Osmosis by Konrad Iturbe (MIT licence). Not affiliated with or endorsed by DJI.</string>
     <string name="ol_banner_active">Home Wi-Fi stays connected</string>
     <string name="ol_banner_active_sub">Internet keeps working while the camera is connected</string>
     <string name="ol_banner_setup">Keep your home Wi-Fi</string>
@@ -77,4 +77,18 @@
     <string name="ol_banner_paired_off_sub">Tap to switch it back on</string>
     <string name="ol_banner_unsupported">Home Wi-Fi will disconnect</string>
     <string name="ol_banner_unsupported_sub">This phone can\'t hold two Wi-Fi connections</string>
+    <string name="ol_sel_close">End selection</string>
+    <string name="ol_sel_all">Select all</string>
+    <string name="ol_sel_clear">Clear</string>
+    <string name="ol_sel_none_yet">Tap photos and videos</string>
+    <string name="ol_sel_hint">Tap a date to select the whole day</string>
+    <string name="ol_open_gallery">Open gallery</string>
+    <plurals name="ol_sel_count">
+        <item quantity="one">%1$d selected</item>
+        <item quantity="other">%1$d selected</item>
+    </plurals>
+    <plurals name="ol_dl_saved">
+        <item quantity="one">%1$d file is in your gallery</item>
+        <item quantity="other">%1$d files are in your gallery</item>
+    </plurals>
 </resources>

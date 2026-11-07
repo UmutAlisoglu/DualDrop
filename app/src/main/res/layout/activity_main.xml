@@ -35,7 +35,7 @@
             tools:visibility="visible"
             tools:text="GPS sync active with OsmoNano-5A31\nMedia browsing is disabled while GPS is streaming. Tap this banner to stop." />
 
-        <!-- OsmoLink: "keep home Wi-Fi" status card; tap opens the setup screen. -->
+        <!-- DualDrop: "keep home Wi-Fi" status card; tap opens the setup screen. -->
         <LinearLayout
             android:id="@+id/dualWifiBanner"
             android:layout_width="match_parent"
@@ -188,6 +188,68 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp" />
+
+            <!-- DualDrop: selection bar, shown while Select mode is on. -->
+            <LinearLayout
+                android:id="@+id/selectionBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ol_banner_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="6dp"
+                android:paddingEnd="8dp"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/btnSelectionClose"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/ol_sel_close"
+                    android:padding="12dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ol_ic_close"
+                    app:tint="@color/osmo_ink" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="4dp">
+
+                    <TextView
+                        android:id="@+id/selectionCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/osmo_ink"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/selectionHint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ol_sel_hint"
+                        android:textColor="@color/osmo_muted"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSelectAll"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minWidth="0dp"
+                    android:text="@string/ol_sel_all"
+                    android:textSize="13sp"
+                    app:cornerRadius="20dp" />
+            </LinearLayout>
 
             <!-- Gallery toolbar: type/faved filter chips + a Select-mode toggle (long-press = all/none). -->
             <HorizontalScrollView

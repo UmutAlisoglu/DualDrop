@@ -60,7 +60,7 @@ class MediaGridAdapter(
     private val selectedMember = HashMap<String, CameraFile>()
 
     private sealed class Row {
-        data class Header(val label: String) : Row()
+        data class Header(val label: String, val ymd: String = "") : Row()
         data class Item(val file: CameraFile) : Row()
     }
     private var rows: List<Row> = emptyList()
@@ -84,7 +84,7 @@ class MediaGridAdapter(
         for (f in all) {
             if (!passesFilter(f)) continue
             val ymd = f.ymd
-            if (ymd != lastYmd) { out.add(Row.Header(headerLabel(ymd))); lastYmd = ymd }
+            if (ymd != lastYmd) { out.add(Row.Header(headerLabel(ymd), ymd)); lastYmd = ymd }
             out.add(Row.Item(f))
         }
         return out
@@ -155,7 +155,12 @@ class MediaGridAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (val row = rows[position]) {
-            is Row.Header -> (holder as HeaderVH).label.text = row.label
+            is Row.Header -> (holder as HeaderVH).let { h ->
+                h.label.text = row.label
+                // DualDrop: in select mode the day header selects / clears that whole day.
+                h.label.setOnClickListener { if (selectMode) toggleDay(row.ymd) }
+                h.label.isClickable = selectMode
+            }
             is Row.Item -> (holder as ItemVH).bind(row.file)
         }
     }
@@ -183,7 +188,8 @@ class MediaGridAdapter(
                 val f = file ?: return@setOnClickListener
                 // Select mode: a tap in the top-right quadrant toggles the queue checkbox. Bursts are many
                 // frames, so they always open the preview (the user picks the frame there) — no direct queue.
-                if (selectMode && !f.isBurst && inCheckboxZone(downX, downY, it.width, it.height)) toggleQueue(f)
+                // DualDrop: in select mode the whole cell toggles (gallery-app convention).
+                if (selectMode && !f.isBurst) toggleQueue(f)
                 else onOpen(f)
             }
             v.setOnLongClickListener { file?.let(onLongPress); true }
@@ -232,6 +238,28 @@ class MediaGridAdapter(
         else selected[f.path] = null
         rowIndexOfPath(f.path).takeIf { it >= 0 }?.let { notifyItemChanged(it) }
         onQueueChanged?.invoke()
+    }
+
+    /** DualDrop: queue [f] (used when a long-press starts select mode). Bursts open the preview instead. */
+    fun selectFile(f: CameraFile) {
+        if (f.isBurst) { onOpen(f); return }
+        if (!selected.containsKey(f.path)) toggleQueue(f)
+    }
+
+    /** DualDrop: select every selectable cell of one day, or clear them if all were already selected. */
+    fun toggleDay(ymd: String) {
+        val day = rows.mapNotNull { (it as? Row.Item)?.file }.filter { it.ymd == ymd && !it.isBurst }
+        if (day.isEmpty()) return
+        val allOn = day.all { selected.containsKey(it.path) }
+        for (f in day) if (allOn) { selected.remove(f.path); selectedMember.remove(f.path) } else selected.putIfAbsent(f.path, null)
+        notifyDataSetChanged()
+        onQueueChanged?.invoke()
+    }
+
+    /** DualDrop: true when every visible selectable cell is selected (drives "Select all" vs "Clear"). */
+    fun allVisibleSelected(): Boolean {
+        val vis = rows.mapNotNull { (it as? Row.Item)?.file }.filter { !it.isBurst }
+        return vis.isNotEmpty() && vis.all { selected.containsKey(it.path) }
     }
 
     fun isQueuedPath(path: String): Boolean = selected.containsKey(path)
