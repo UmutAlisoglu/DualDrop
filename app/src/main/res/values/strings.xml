@@ -25,7 +25,7 @@
 
     <!-- Bluetooth off dialog -->
     <string name="bluetooth_off_title">Bluetooth is off</string>
-    <string name="bluetooth_off_message">Osmosis finds and pairs with your camera over Bluetooth. Turn it on to scan for cameras.</string>
+    <string name="bluetooth_off_message">DualDrop finds and pairs with your camera over Bluetooth. Turn it on to scan for cameras.</string>
     <string name="turn_on">Turn on</string>
 
     <!-- Pairing approval dialog -->
@@ -44,7 +44,7 @@
 
     <!-- Wi-Fi off dialog -->
     <string name="wifi_off_title">Wi-Fi is off</string>
-    <string name="wifi_off_message">Osmosis joins the camera\'s own Wi-Fi network to browse and download media. Turn Wi-Fi on, then continue.</string>
+    <string name="wifi_off_message">DualDrop joins the camera\'s own Wi-Fi network to browse and download media. Turn Wi-Fi on, then continue.</string>
     <string name="turn_on_wifi">Turn on Wi-Fi</string>
 
     <!-- Wi-Fi join failed dialog -->
@@ -171,7 +171,7 @@
     <string name="share_logs_title">Share logs with Konrad?</string>
     <string name="share_logs_chooser">Share logs with Konrad</string>
     <string name="share_logs_failed">Couldn\'t share logs: %1$s</string>
-    <string name="logs_email_subject">Osmosis logs — %1$s</string>
+    <string name="logs_email_subject">DualDrop logs — %1$s</string>
 
     <!-- Media preview -->
     <string name="add_to_queue">Add to Queue</string>

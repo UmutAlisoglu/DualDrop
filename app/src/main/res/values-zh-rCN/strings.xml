@@ -24,7 +24,7 @@
 
     <!-- Bluetooth off dialog -->
     <string name="bluetooth_off_title">蓝牙已关闭</string>
-    <string name="bluetooth_off_message">Osmosis 通过蓝牙查找并配对相机。请开启蓝牙以扫描相机。</string>
+    <string name="bluetooth_off_message">DualDrop 通过蓝牙查找并配对相机。请开启蓝牙以扫描相机。</string>
     <string name="turn_on">开启</string>
 
     <!-- Pairing approval dialog -->
@@ -44,7 +44,7 @@
 
     <!-- Wi-Fi off dialog -->
     <string name="wifi_off_title">Wi-Fi 已关闭</string>
-    <string name="wifi_off_message">Osmosis 需要加入相机自身的 Wi-Fi 网络来浏览和下载媒体。请开启 Wi-Fi 后继续。</string>
+    <string name="wifi_off_message">DualDrop 需要加入相机自身的 Wi-Fi 网络来浏览和下载媒体。请开启 Wi-Fi 后继续。</string>
     <string name="turn_on_wifi">开启 Wi-Fi</string>
 
     <!-- Wi-Fi join failed dialog -->
@@ -171,7 +171,7 @@
     <string name="share_logs_title">与 Konrad 分享日志？</string>
     <string name="share_logs_chooser">与 Konrad 分享日志</string>
     <string name="share_logs_failed">无法分享日志：%1$s</string>
-    <string name="logs_email_subject">Osmosis 日志 — %1$s</string>
+    <string name="logs_email_subject">DualDrop 日志 — %1$s</string>
 
     <!-- Media preview -->
     <string name="add_to_queue">加入下载队列</string>

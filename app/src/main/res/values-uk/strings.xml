@@ -25,7 +25,7 @@
 
     <!-- Bluetooth off dialog -->
     <string name="bluetooth_off_title">Bluetooth вимкнено</string>
-    <string name="bluetooth_off_message">Osmosis знаходить і з’єднується з камерою через Bluetooth. Увімкніть його, щоб шукати камери.</string>
+    <string name="bluetooth_off_message">DualDrop знаходить і з’єднується з камерою через Bluetooth. Увімкніть його, щоб шукати камери.</string>
     <string name="turn_on">Увімкнути</string>
 
     <!-- Pairing approval dialog -->
@@ -44,7 +44,7 @@
 
     <!-- Wi-Fi off dialog -->
     <string name="wifi_off_title">Wi-Fi вимкнено</string>
-    <string name="wifi_off_message">Osmosis під’єднується до власної мережі Wi-Fi камери, щоб переглядати й завантажувати медіа. Увімкніть Wi-Fi і продовжте.</string>
+    <string name="wifi_off_message">DualDrop під’єднується до власної мережі Wi-Fi камери, щоб переглядати й завантажувати медіа. Увімкніть Wi-Fi і продовжте.</string>
     <string name="turn_on_wifi">Увімкнути Wi-Fi</string>
 
     <!-- Wi-Fi join failed dialog -->
@@ -169,7 +169,7 @@
     <string name="share_logs_title">Поділитися журналами з Konrad?</string>
     <string name="share_logs_chooser">Поділитися журналами з Konrad</string>
     <string name="share_logs_failed">Не вдалося поділитися журналами: %1$s</string>
-    <string name="logs_email_subject">Журнали Osmosis — %1$s</string>
+    <string name="logs_email_subject">Журнали DualDrop — %1$s</string>
 
     <!-- Media preview -->
     <string name="add_to_queue">Додати до черги</string>

@@ -149,7 +149,7 @@ object DualWifi {
     }
 
     fun log(ctx: Context, s: String) {
-        val ts = java.text.SimpleDateFormat("dd.MM. HH:mm", java.util.Locale.GERMANY).format(java.util.Date())
+        val ts = java.text.DateFormat.getDateTimeInstance(java.text.DateFormat.SHORT, java.text.DateFormat.SHORT).format(java.util.Date())
         prefs(ctx).edit().putString("last_log", "$ts · $s").apply()
     }
 

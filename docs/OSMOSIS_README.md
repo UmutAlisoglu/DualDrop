@@ -1,0 +1,198 @@
+> This is the original README of [Osmosis](https://github.com/KonradIT/Osmosis), the open-source app DualDrop is built on. It is kept here for credits and technical background. Links to downloads and issues point to the Osmosis project. For DualDrop itself, see the [main README](../README.md).
+
+# Osmosis — Android media client for DJI Osmo cameras
+
+<div align="center">
+
+![](../app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
+
+</div>
+
+Third-party Android client to download videos and photos from DJI Osmo action / gimbal cameras, as well as some DJI drones. **No DJI SDK dependencies, no logins, no bloatware, no activation.**
+
+<p align="center">
+  <img src="../screenshots/Screenshot_20260714-201612_1.png" width="500"/>
+</p>
+
+Works with the **DJI Osmo Nano**, **Osmo Pocket 3 / 4 and DJI Action 5 Pro / 6**, ongoing work happening to support the rest of the DJI Osmo lineup (see [Supported cameras](#supported-cameras)). Also tested with the **Xtra Edge Pro**, a rebadged **DJI Osmo Action 5 Pro** made by DJI front company Xtra.
+
+**Drones:** offload over QuickTransfer is **verified working only on the DJI Mavic 3**. Work is ongoing to support more DJI airframes.
+
+Read The Verge's review of an early version of the app:
+
+[![image](https://platform.theverge.com/wp-content/uploads/sites/2/2026/08/verge-osmo-pocket-4p-sean-hollister-1-5.jpg?quality=90&strip=all&w=500)](https://www.theverge.com/tech/981852/osmosis-app-download-dji-osmo-camera-video-mimo-replacement)
+
+## Getting started
+
+1. Turn on Bluetooth and WiFi, and open Osmosis; grant the permission prompts.
+2. Power on the camera, wait a few seconds and tap it in the **Cameras** list. Should show as "NEW".
+3. **Approve the pairing prompt on the camera screen** (will read: `OSMO`).
+4. **Approve the Android "join WiFi" dialog** when it appears.
+5. Browse the grid. Tap a clip to preview, trim, and add it to the queue.
+6. Tap **Download** — files land in your phone's gallery.
+
+## Download
+
+[<img src="https://f-droid.org/badge/get-it-on.png"
+    alt="Get it on F-Droid"
+    height="80">](https://f-droid.org/packages/dev.konraditurbe.osmosis/)
+
+Directly from GitHub releases:
+
+- GitHub releases: https://github.com/KonradIT/osmosis/releases
+- Unobtanium - app that notifies you of any update to the github releases: https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/KonradIT/osmosis
+- RSS feed: `github.com/KonradIT/osmosis/releases.atom` - Add this to your RSS reader of choice, eg: [Feeder](https://github.com/spacecowboy/feeder)
+
+**Osmosis will not be published to Google Play**
+
+In 2024 the EU introduced a law wherein any app publisher who is classified as a merchant (eg: offering paid apps/inapp subscriptions) will have their address and phone number shown in the Play Store listing by everyone who visits the app's listing.
+
+I used to have a Google Play account with 1 paid app. This makes my account a merchant and therefore subject to this EU law.
+
+I tried to look for solutions, and it boils down to paying a registered agent / virtual office to give me a contract where *their* address is shown.
+
+Not worth my time or money entertaining insane EU rules. So be it. No Play.
+
+[More info on Google's rules](https://www.reddit.com/r/androiddev/comments/1u1106l/why_do_individual_google_play_developers_have_to/)
+
+## Features
+
+- **Media grid** with thumbnails, pulled straight off the camera.
+- **Low-res streaming preview** — scrub any clip without downloading it first.
+- **In-preview trimming** — set in/out points and download just that slice of the **high-res** clip. Keyframe-accurate stream copy in original quality.
+- **Frame grab** — pause a clip and tap the camera icon to save that instant as a full-resolution JPEG, decoded straight off the camera's high-res file. Only the surrounding keyframe group is fetched, not the clip.
+- **Resumable download queue** — high-res downloads straight into your phone's gallery.
+- **Live status** — battery, shooting mode, and storage (internal / SD) shown in a status pill. More to come (recording indicator, resolution, fps, etc...)
+- **DNG** file download if JPEG+DNG mode is enabled, Mimo doesn't do this.
+- **Multi-camera** — remembers your cameras and shows which are currently in range.
+- **Favorite/delete** your videos/photos from the app, and view previously hearted media
+- **Sync GPS with your Osmo**: Uses R-SDK [Osmo GPS controller](https://github.com/dji-sdk/Osmo-GPS-Controller-Demo) commands to send GPS from the phone to your camera. Useful to add stats later using [Telemetry Overlay](https://goprotelemetryextractor.com/telemetry-overlay-gps-video-sensors).
+- **RTMP livestream** — swipe a camera left and tap Stream to send it to a WiFi network and start streaming to YouTube/Twitch/anything RTMP. Ported from [djictl](https://github.com/xaionaro-go/djictl).
+
+<img src="../screenshots/Screenshot_20260714-210742_1.png" width="500"/>
+
+## Supported cameras
+
+| Camera | Status |
+|---|---|
+| Osmo Nano | **Verified on hardware** |
+| Osmo Action 5 Pro / Xtra Edge Pro | **Verified on hardware** |
+| Osmo Action 6 | **Verified on hardware** |
+| Osmo Pocket 3 | **Verified on hardware** |
+| Osmo Pocket 4 / 4 Pro | **Verified on hardware** |
+| Xtra Atto / Edge / Muse | Untested, should work |
+| Osmo Action 1 | _Started_ want this camera supported? raise an issue |
+| Osmo Action 4 | **Verified on hardware**, thanks to Ave @aveao for helping flip this to verified in https://github.com/KonradIT/osmosis/pull/37 |
+| Osmo 360 | Unplanned (needs Mimo to render 360 content) |
+| Osmo Action 2/3 | _Started_ want this camera supported? raise an issue |
+| DJI Mavic 3 (QuickTransfer) | **Verified on hardware** |
+| DJI Neo 2 (QuickTransfer) | _Started_ |
+| DJI Mini 3 (QuickTransfer) | _Started_ |
+| Any other DJI drone | Unverified, might work |
+
+Want to help adding support for an unsupported camera? [Open an issue](https://github.com/KonradIT/Osmosis/issues) to begin help me add support for it.
+
+**Xtra rebadges.** Xtra is a [DJI front company that sells rebadged Osmo cameras US-only to sidestep the DJI ban](https://github.com/KonradIT/dji-front-companies):
+
+- **Edge Pro** = Action 5 Pro
+- **Atto** = Nano
+- **Edge** = Action 4
+- **Muse** = Pocket 3.
+
+Actively trying to support, raise an issue if you have these cams and would like to help:
+
+- Osmo Action 3
+- Osmo Action 2
+- Osmo Action (1)
+- DJI Neo 2.
+
+## Debugging / supporting new cameras:
+
+Start the app, enable Save Logs, try and connect to the camera, anything that is being sent and received is being logged to an internal location only accessible by the app. Tap Save Logs again to disable the logging + gzip it to share it with me.
+
+## Reverse engineered command list:
+
+If you want to build your own app or program that interfaces with DJI Osmo cameras, this document will help:
+
+[MEDIA_PROTOCOL.md](../MEDIA_PROTOCOL.md)
+
+This is the most extensive documentation of DJI's undocumented DUML protocol for Osmo cameras to date. It is derived using DJI Mimo wifi/ble captures.
+
+Covers both BLE/WiFi transport routes.
+
+Commands reverse engineered not found anywhere else:
+
+- Parsing media list 0x26 and it's response 0x00/0x27
+- Pagination for querying older media
+- Highlights, delete file
+- RTMP livestream start/stop over BLE 0x08/0x78, 0x02/0xE1, 0x02/0x8E
+
+## Privacy
+
+Osmosis talks to **only your camera** (`192.168.2.1`). No analytics, no accounts, no activation servers, no cloud. Your media never leaves your phone and camera.
+
+Contrast the official apps, which require a login and phone home to activation and telemetry backends (the Xtra companion app even bundles ByteDance analytics). Osmosis has none of that — the network security config restricts it to the camera's local address.
+
+## Requirements
+
+- **Android 10+** (API 29).
+- **Bluetooth LE**.
+- Permissions: 
+  - Nearby devices (Bluetooth scan/connect) on Android 12+, or Location on older versions
+  - WiFi state/change. 
+  - No internet permission is needed for anything but the camera's local AP.
+  - No storage permission needed due to the use of Android's media APIs to save content.
+
+## Build from source
+
+Standard Gradle Android build:
+
+```sh
+./gradlew assembleDebug
+```
+
+Plain Android Views (no Jetpack Compose). Built with AGP 8.5.2 / Gradle 8.7 / JDK 17 (JDK 17–21 work); `compileSdk 34`, `minSdk 29`.
+
+## Roadmap
+
+Planned work and reverse-engineering notes live in [ROADMAP.md](../ROADMAP.md).
+
+As of v1.4.3, the app is basically at it's plateau feature-wise. I do wish to add support for older cameras and more drones, but the app will remain the same, no groundbreaking additions or new capabilities are foreseen to be added. I do not want [feature creep](https://en.wikipedia.org/wiki/Feature_creep) to make the app worse, given the complexity of supporting many different action cameras and handheld cameras, as well as drones. Enumerating and downloading media is hard enough as it is. Updates will largely consist of supporting new hardware, fixing bugs and UX/UI polishing.
+
+## Projects using Osmosis references:
+
+- https://github.com/brianmerchant/Kaze-for-DJI
+- https://github.com/erik-sutton95/OpenPocketCine
+- https://github.com/intermittech/OsmoOffload
+- https://github.com/rover1312/shutterlink
+- https://github.com/brianmerchant/Pocket3Direct-Android
+- https://github.com/dstrat28/action-multicam-remote
+
+## Credits
+
+The monumental task of reverse engineering DJI's DUML protocol was initially done by the [DJI OGs](https://github.com/o-gs). DJI never released an SDK for their Osmo camera line, forcing users onto the DJI Mimo app. Thankfully several folks on GitHub open-sourced their reverse-engineering efforts to interact with DJI cameras over BLE and WiFi:
+
+- https://github.com/dimadesu/dji-remote (Osmosis vendors its `DjiCrc` implementation)
+- https://github.com/SemiConscious/osmo-download
+- https://github.com/sniffingpickles/DJI-Wifi-Connect
+- https://github.com/yigitkonur/lib-osmo-ble
+- https://github.com/samuelsadok/dji_protocol
+- https://github.com/xaionaro/reverse-engineering-dji
+
+DJI's own official [Osmo-GPS-Controller-Demo](https://github.com/dji-sdk/Osmo-GPS-Controller-Demo) was also a useful reference for the accessory (R-SDK) pairing protocol.
+
+This application couldn't have been built without the work above. That said, much of it didn't work for the Osmo Nano and Edge Pro, so a significant additional reverse-engineering effort went into making Osmosis fully compatible with the DJI Osmo Nano, as well as fully reverse engineering the responses to unsupported DUML commands.
+
+Also, credit where is due to the testers who provided early feedback and helped me develop this for cameras I don't own:
+
+- [Rhoenschrat](https://www.rhoenschrat.de/)
+- [Juan Irache](https://github.com/JuanIrache)
+- [GetHypoxic](https://gethypoxic.com/)
+
+## License
+
+[MIT](../LICENSE.txt).
+
+## Disclaimer
+
+Independent third-party project — **not affiliated with, authorized, or endorsed by DJI**. "DJI" and "Osmo" are trademarks of their respective owners. Use at your own risk; deleting or offloading media is your responsibility.

@@ -25,7 +25,7 @@
 
     <!-- Bluetooth off dialog -->
     <string name="bluetooth_off_title">Bluetooth ist aus</string>
-    <string name="bluetooth_off_message">Osmosis findet und koppelt deine Kamera über Bluetooth. Schalte es ein, um nach Kameras zu suchen.</string>
+    <string name="bluetooth_off_message">DualDrop findet und koppelt deine Kamera über Bluetooth. Schalte es ein, um nach Kameras zu suchen.</string>
     <string name="turn_on">Einschalten</string>
 
     <!-- Pairing approval dialog -->
@@ -44,7 +44,7 @@
 
     <!-- Wi-Fi off dialog -->
     <string name="wifi_off_title">WLAN ist aus</string>
-    <string name="wifi_off_message">Osmosis verbindet sich mit dem eigenen WLAN der Kamera, um Medien zu durchsuchen und herunterzuladen. Schalte WLAN ein und fahre fort.</string>
+    <string name="wifi_off_message">DualDrop verbindet sich mit dem eigenen WLAN der Kamera, um Medien zu durchsuchen und herunterzuladen. Schalte WLAN ein und fahre fort.</string>
     <string name="turn_on_wifi">WLAN einschalten</string>
 
     <!-- Wi-Fi join failed dialog -->
@@ -169,7 +169,7 @@
     <string name="share_logs_title">Protokolle mit Konrad teilen?</string>
     <string name="share_logs_chooser">Protokolle mit Konrad teilen</string>
     <string name="share_logs_failed">Protokolle konnten nicht geteilt werden: %1$s</string>
-    <string name="logs_email_subject">Osmosis-Protokolle — %1$s</string>
+    <string name="logs_email_subject">DualDrop-Protokolle — %1$s</string>
 
     <!-- Media preview -->
     <string name="add_to_queue">Zur Warteschlange hinzufügen</string>

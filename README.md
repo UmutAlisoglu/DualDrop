@@ -1,232 +1,191 @@
 # DualDrop
 
-**One simple app for DJI Osmo cameras that replaces DJI Mimo, and keeps your phone on your home Wi-Fi while it talks to the camera.**
+**Get photos and videos off your DJI Osmo Action camera, without losing your home Wi-Fi.**
 
-DualDrop is a fork of [Osmosis](https://github.com/KonradIT/Osmosis) by Konrad Iturbe (MIT licence), which does all the camera work: Bluetooth pairing and wake, browsing, previewing and downloading photos and videos over the camera's Wi-Fi. DualDrop adds one thing on top:
+DualDrop is a free Android app. It connects to your camera, shows everything on it, and saves the photos and videos you pick to your phone's gallery. On many phones it can also keep your home Wi-Fi and internet working while the camera is connected, which the official app can't do.
 
-### Keep home Wi-Fi ("Heim-WLAN behalten")
+[**⬇ Download the latest version**](https://github.com/UmutAlisoglu/DualDrop/releases/latest)
 
-Normally a phone drops its home Wi-Fi as soon as it joins the camera's hotspot. Many phones (for example the Samsung Galaxy S25 Ultra) have a Wi-Fi chip that can hold a second, local-only connection, but ship the Android setting that allows it switched off. DualDrop switches it on:
-
-- **One-time setup in the app, no PC, no root, no Shizuku.** DualDrop pairs with the phone's own *Wireless debugging* (you type a 6-digit code into a notification), grants itself the rights it needs, and checks whether your phone's Wi-Fi chip supports two connections.
-- **Survives reboots.** The setting resets on every restart; DualDrop re-applies it automatically about 15 to 45 seconds after boot, as soon as the phone is on Wi-Fi, and switches Wireless debugging off again afterwards.
-- **Compatibility check.** If your phone can't do it, DualDrop says so plainly and still works like Osmosis (home Wi-Fi drops while the camera is connected).
-
-Tested on a Galaxy S25 Ultra (Android 17 / One UI 9) with an Osmo Action 4: home Wi-Fi and internet stayed up while browsing and downloading from the camera at about 17 MB/s.
-
-The technical background: the app runs `cmd wifi force-overlay-config-value bool config_wifiMultiStaLocalOnlyConcurrencyEnabled enabled true` over a local adb connection. Requires Android 11+ (Wireless debugging) and Developer options.
-
-**Deutsch:** DualDrop ersetzt DJI Mimo und hält dein Handy mit dem Heim-WLAN verbunden, während es mit der Kamera verbunden ist. Einmalige Einrichtung direkt in der App (ohne PC, ohne Root), danach läuft alles automatisch, auch nach Neustarts.
-
-### Not affiliated with DJI / Disclaimer
-
-DualDrop is an independent, unofficial project. It is **not affiliated with, endorsed by or sponsored by DJI**. "DJI", "Osmo" and "Osmo Action" are trademarks of SZ DJI Technology Co., Ltd. and are used here only to describe which cameras the app works with. No DJI code, SDK or firmware is included.
-
-The software is provided "as is", without warranty of any kind; use it at your own risk. The Wi-Fi feature only changes a runtime setting that resets on reboot; it does not modify firmware.
-
-*Deutsch:* DualDrop ist ein inoffizielles, unabhängiges Projekt und **nicht mit DJI verbunden**. Nutzung ohne Gewähr und auf eigenes Risiko.
-
-### Licence
-
-DualDrop is released under the MIT licence, like Osmosis; see [LICENSE.txt](LICENSE.txt) (Copyright Konrad Iturbe and contributors). Bundled third-party libraries and their licences are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+> DualDrop is an independent, unofficial app. It is not made by DJI and not affiliated with DJI. See [Disclaimer](#disclaimer).
 
 ---
 
-*The original Osmosis README follows.*
+## Contents
 
-# Osmosis — Android media client for DJI Osmo cameras
+- [What DualDrop does](#what-dualdrop-does)
+- [What you need](#what-you-need)
+- [Install DualDrop](#install-dualdrop)
+- [Connect your camera](#connect-your-camera)
+- [Download photos and videos](#download-photos-and-videos)
+- [Keep your home Wi-Fi (optional)](#keep-your-home-wi-fi-optional)
+- [Questions and answers](#questions-and-answers)
+- [Something isn't working](#something-isnt-working)
+- [Privacy](#privacy)
+- [Disclaimer](#disclaimer)
+- [Credits and licence](#credits-and-licence)
+- [For developers](#for-developers)
 
-<div align="center">
+---
 
-![](./app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
+## What DualDrop does
 
-</div>
+- **Replaces DJI Mimo for downloading.** No account, no login, no activation, no ads.
+- **Browse the camera.** See all photos and videos as a grid, sorted by day.
+- **Pick many at once.** Long-press one item, then tap more, or tap a date to select the whole day. One tap downloads them all into your gallery, with a progress bar.
+- **Preview before you download.** Play a video straight from the camera, trim it, or save a single frame as a photo.
+- **Keeps your home Wi-Fi.** Normally your phone leaves your home Wi-Fi when it joins the camera's Wi-Fi. DualDrop can keep both connected at once, so your internet, messages and music keep working. This works on many newer phones, for example the Samsung Galaxy S25 series. DualDrop checks your phone and tells you if it can't.
+- **Set it up once.** The Wi-Fi feature is set up inside the app in about two minutes. No computer, no root, no extra apps. After a restart it switches itself back on automatically.
 
-Third-party Android client to download videos and photos from DJI Osmo action / gimbal cameras, as well as some DJI drones. **No DJI SDK dependencies, no logins, no bloatware, no activation.**
+## What you need
 
-<p align="center">
-  <img src="./screenshots/Screenshot_20260714-201612_1.png" width="500"/>
-</p>
-
-Works with the **DJI Osmo Nano**, **Osmo Pocket 3 / 4 and DJI Action 5 Pro / 6**, ongoing work happening to support the rest of the DJI Osmo lineup (see [Supported cameras](#supported-cameras)). Also tested with the **Xtra Edge Pro**, a rebadged **DJI Osmo Action 5 Pro** made by DJI front company Xtra.
-
-**Drones:** offload over QuickTransfer is **verified working only on the DJI Mavic 3**. Work is ongoing to support more DJI airframes.
-
-Read The Verge's review of an early version of the app:
-
-[![image](https://platform.theverge.com/wp-content/uploads/sites/2/2026/08/verge-osmo-pocket-4p-sean-hollister-1-5.jpg?quality=90&strip=all&w=500)](https://www.theverge.com/tech/981852/osmosis-app-download-dji-osmo-camera-video-mimo-replacement)
-
-## Getting started
-
-1. Turn on Bluetooth and WiFi, and open Osmosis; grant the permission prompts.
-2. Power on the camera, wait a few seconds and tap it in the **Cameras** list. Should show as "NEW".
-3. **Approve the pairing prompt on the camera screen** (will read: `OSMO`).
-4. **Approve the Android "join WiFi" dialog** when it appears.
-5. Browse the grid. Tap a clip to preview, trim, and add it to the queue.
-6. Tap **Download** — files land in your phone's gallery.
-
-## Download
-
-[<img src="https://f-droid.org/badge/get-it-on.png"
-    alt="Get it on F-Droid"
-    height="80">](https://f-droid.org/packages/dev.konraditurbe.osmosis/)
-
-Directly from GitHub releases:
-
-- GitHub releases: https://github.com/KonradIT/osmosis/releases
-- Unobtanium - app that notifies you of any update to the github releases: https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/KonradIT/osmosis
-- RSS feed: `github.com/KonradIT/osmosis/releases.atom` - Add this to your RSS reader of choice, eg: [Feeder](https://github.com/spacecowboy/feeder)
-
-**Osmosis will not be published to Google Play**
-
-In 2024 the EU introduced a law wherein any app publisher who is classified as a merchant (eg: offering paid apps/inapp subscriptions) will have their address and phone number shown in the Play Store listing by everyone who visits the app's listing.
-
-I used to have a Google Play account with 1 paid app. This makes my account a merchant and therefore subject to this EU law.
-
-I tried to look for solutions, and it boils down to paying a registered agent / virtual office to give me a contract where *their* address is shown.
-
-Not worth my time or money entertaining insane EU rules. So be it. No Play.
-
-[More info on Google's rules](https://www.reddit.com/r/androiddev/comments/1u1106l/why_do_individual_google_play_developers_have_to/)
-
-## Features
-
-- **Media grid** with thumbnails, pulled straight off the camera.
-- **Low-res streaming preview** — scrub any clip without downloading it first.
-- **In-preview trimming** — set in/out points and download just that slice of the **high-res** clip. Keyframe-accurate stream copy in original quality.
-- **Frame grab** — pause a clip and tap the camera icon to save that instant as a full-resolution JPEG, decoded straight off the camera's high-res file. Only the surrounding keyframe group is fetched, not the clip.
-- **Resumable download queue** — high-res downloads straight into your phone's gallery.
-- **Live status** — battery, shooting mode, and storage (internal / SD) shown in a status pill. More to come (recording indicator, resolution, fps, etc...)
-- **DNG** file download if JPEG+DNG mode is enabled, Mimo doesn't do this.
-- **Multi-camera** — remembers your cameras and shows which are currently in range.
-- **Favorite/delete** your videos/photos from the app, and view previously hearted media
-- **Sync GPS with your Osmo**: Uses R-SDK [Osmo GPS controller](https://github.com/dji-sdk/Osmo-GPS-Controller-Demo) commands to send GPS from the phone to your camera. Useful to add stats later using [Telemetry Overlay](https://goprotelemetryextractor.com/telemetry-overlay-gps-video-sensors).
-- **RTMP livestream** — swipe a camera left and tap Stream to send it to a WiFi network and start streaming to YouTube/Twitch/anything RTMP. Ported from [djictl](https://github.com/xaionaro-go/djictl).
-
-<img src="./screenshots/Screenshot_20260714-210742_1.png" width="500"/>
-
-## Supported cameras
-
-| Camera | Status |
+| | |
 |---|---|
-| Osmo Nano | **Verified on hardware** |
-| Osmo Action 5 Pro / Xtra Edge Pro | **Verified on hardware** |
-| Osmo Action 6 | **Verified on hardware** |
-| Osmo Pocket 3 | **Verified on hardware** |
-| Osmo Pocket 4 / 4 Pro | **Verified on hardware** |
-| Xtra Atto / Edge / Muse | Untested, should work |
-| Osmo Action 1 | _Started_ want this camera supported? raise an issue |
-| Osmo Action 4 | **Verified on hardware**, thanks to Ave @aveao for helping flip this to verified in https://github.com/KonradIT/osmosis/pull/37 |
-| Osmo 360 | Unplanned (needs Mimo to render 360 content) |
-| Osmo Action 2/3 | _Started_ want this camera supported? raise an issue |
-| DJI Mavic 3 (QuickTransfer) | **Verified on hardware** |
-| DJI Neo 2 (QuickTransfer) | _Started_ |
-| DJI Mini 3 (QuickTransfer) | _Started_ |
-| Any other DJI drone | Unverified, might work |
+| **Phone** | Android 10 or newer. The "keep home Wi-Fi" feature needs Android 11 or newer and a phone whose Wi-Fi chip supports two connections. |
+| **Camera** | Tested with the **DJI Osmo Action 4**. The camera part comes from [Osmosis](https://github.com/KonradIT/Osmosis), which also supports Osmo Action 5 Pro, Action 6, Osmo Nano and Osmo Pocket 3 / 4 ([full list](docs/OSMOSIS_README.md#supported-cameras)). |
+| **On the phone** | Bluetooth and Wi-Fi switched on. |
 
-Want to help adding support for an unsupported camera? [Open an issue](../../issues) to begin help me add support for it.
+## Install DualDrop
 
-**Xtra rebadges.** Xtra is a [DJI front company that sells rebadged Osmo cameras US-only to sidestep the DJI ban](https://github.com/KonradIT/dji-front-companies):
+DualDrop is not in the Google Play Store. You install it directly from this page. It only takes a minute.
 
-- **Edge Pro** = Action 5 Pro
-- **Atto** = Nano
-- **Edge** = Action 4
-- **Muse** = Pocket 3.
+1. On your phone, open the [latest release](https://github.com/UmutAlisoglu/DualDrop/releases/latest).
+2. Under **Assets**, tap the file that ends in **.apk** (for example `DualDrop-0.2.1.apk`) to download it.
+3. Open the downloaded file (from the notification or your *Downloads* folder).
+4. If your phone asks, allow your browser or file app to **install unknown apps**, then go back and tap **Install**.
+5. If Google Play Protect shows a warning, tap **More details › Install anyway**. This appears for apps that don't come from the Play Store.
 
-Actively trying to support, raise an issue if you have these cams and would like to help:
+To update later, download the newer .apk and install it the same way. Your settings and cameras are kept.
 
-- Osmo Action 3
-- Osmo Action 2
-- Osmo Action (1)
-- DJI Neo 2.
+## Connect your camera
 
-## Debugging / supporting new cameras:
+1. Switch on the camera and wait a few seconds.
+2. Open DualDrop and allow the permissions it asks for (nearby devices / Bluetooth).
+3. Tap your camera in the list. A new camera shows the label **NEW**.
+4. **Look at the camera screen** and confirm the pairing request (it says **OSMO**).
+5. When Android asks to join the camera's Wi-Fi, tap **Connect**.
 
-Start the app, enable Save Logs, try and connect to the camera, anything that is being sent and received is being logged to an internal location only accessible by the app. Tap Save Logs again to disable the logging + gzip it to share it with me.
+You only have to pair once. Next time, just open DualDrop and tap the camera.
 
-## Reverse engineered command list:
+> Close DJI Mimo before you connect. The camera can only talk to one app at a time.
 
-If you want to build your own app or program that interfaces with DJI Osmo cameras, this document will help:
+## Download photos and videos
 
-[./MEDIA_PROTOCOL.md](./MEDIA_PROTOCOL.md)
+- **One item:** tap it to open the preview, tap **Add to Queue**, go back and tap **Download**.
+- **Several items:** long-press any photo or video to start selecting. Tap more items, or tap a **date** to select the whole day. Then tap **Download**.
+- When it's done, DualDrop shows how many files are in your gallery. Tap **Open gallery** to see them.
 
-This is the most extensive documentation of DJI's undocumented DUML protocol for Osmo cameras to date. It is derived using DJI Mimo wifi/ble captures.
+Files are saved in full quality to your phone's normal gallery (Photos / Gallery app).
 
-Covers both BLE/WiFi transport routes.
+## Keep your home Wi-Fi (optional)
 
-Commands reverse engineered not found anywhere else:
+Without this, your phone drops your home Wi-Fi while it's connected to the camera. With it, both stay connected. You set it up once:
 
-- Parsing media list 0x26 and it's response 0x00/0x27
-- Pagination for querying older media
-- Highlights, delete file
-- RTMP livestream start/stop over BLE 0x08/0x78, 0x02/0xE1, 0x02/0x8E
+1. In DualDrop, tap the **Keep your home Wi-Fi** banner on the main screen.
+2. Follow the three steps on screen:
+   - **Turn on developer options.** Go to *Settings › About phone › Software information* and tap **Build number** seven times.
+   - **Connect to Wi-Fi**, for example your home Wi-Fi.
+   - **Pair DualDrop with your phone.** Tap **Start**, switch on **Wireless debugging**, open *Pair device with pairing code*, then type the 6-digit code into the DualDrop notification.
+3. DualDrop finishes the rest by itself and shows **On** when it works.
+
+After that you don't need to do anything. After every restart, DualDrop switches it back on within about a minute once your phone is on Wi-Fi.
+
+<details>
+<summary>How does this work? (technical)</summary>
+
+Many phones have a Wi-Fi chip that can hold a second, local-only connection, but Android ships the setting that allows it switched off. DualDrop pairs with the phone's own *Wireless debugging* (a local connection to itself, nothing leaves the phone), grants itself the permission it needs, and runs:
+
+```
+cmd wifi force-overlay-config-value bool config_wifiMultiStaLocalOnlyConcurrencyEnabled enabled true
+```
+
+This is a runtime setting. It does not change any firmware and it resets on every restart, which is why DualDrop re-applies it after boot. To check whether a phone supports it, DualDrop asks Android whether a second Wi-Fi interface "can be created without destroying" the first.
+
+Tested on a Samsung Galaxy S25 Ultra (Android 17 / One UI 9) with an Osmo Action 4: home Wi-Fi and internet stayed up while downloading from the camera at about 17 MB/s.
+
+</details>
+
+## Questions and answers
+
+**Is DualDrop free?**
+Yes. It's free and open source. There are no ads, accounts or in-app purchases.
+
+**Is it safe to install an app from GitHub?**
+The full source code is public on this page, so anyone can check what it does. DualDrop only talks to your camera. It has no analytics and sends nothing to the internet.
+
+**Do I still need DJI Mimo?**
+Not for browsing and downloading. You may still want Mimo for firmware updates or camera features DualDrop doesn't have, such as editing templates.
+
+**Does it work without internet, for example in airplane mode?**
+Yes. Downloading from the camera only uses the camera's own Wi-Fi and Bluetooth. Switch Bluetooth and Wi-Fi back on after enabling airplane mode.
+
+**Does it work with my phone?**
+The camera part works on most Android 10+ phones. For the "keep home Wi-Fi" feature, just try the setup: DualDrop checks your phone and tells you clearly if it isn't supported. Tested so far on a Samsung Galaxy S25 Ultra.
+
+**Does it work on iPhone?**
+No, DualDrop is Android only.
+
+**Can it change my camera's settings or show a live view?**
+Not at the moment. DualDrop is for getting your photos and videos onto your phone.
+
+**Is "keep home Wi-Fi" risky for my phone?**
+It only flips a setting that Android already has, and the setting resets on every restart. Nothing is installed or changed in the system. You can switch it off in the app at any time.
+
+**Why do I need developer options and Wireless debugging?**
+That's the only way for an app to change this Wi-Fi setting without a computer or root. DualDrop switches Wireless debugging off again after it's done.
+
+**Where are my downloaded files?**
+In your phone's normal gallery app, like photos you take with the phone.
+
+## Something isn't working
+
+**The camera doesn't show up in the list**
+- Make sure Bluetooth is on and the camera is switched on and awake.
+- Close DJI Mimo completely (swipe it away from recent apps).
+- Tap **Rescan** to search again.
+
+**The camera never asks to pair ("OSMO")**
+- Tap the camera in DualDrop again and watch the camera screen; the request only shows for a short time.
+- If it was paired with another phone before, restart the camera and try again.
+
+**"Join Wi-Fi" fails or the gallery stays empty**
+- Tap **Connect** when Android asks to join the camera's Wi-Fi.
+- Switch Wi-Fi off and on again, then reconnect in DualDrop.
+
+**Downloads stop or are slow**
+- Keep the phone close to the camera and keep the screen on.
+- Make sure the camera battery isn't almost empty.
+
+**Pairing with Wireless debugging doesn't work**
+- On Samsung phones, after expanding the DualDrop notification, tap **Enter code** once more if the text field doesn't appear.
+- The 6-digit code expires quickly. If it says "Code wrong or expired", open *Pair device with pairing code* again and enter the new code.
+- If Android says Wireless debugging isn't allowed on this network, switch it on, tap **Allow** and tick *Always allow on this network*.
+
+**Home Wi-Fi still disconnects**
+- Open the **Keep your home Wi-Fi** screen in DualDrop. If it says **Off right now**, tap **Switch on now**.
+- If it says **Not supported**, your phone's Wi-Fi chip can't hold two connections. DualDrop still works, but home Wi-Fi drops while the camera is connected.
+
+**Still stuck?** [Open an issue](https://github.com/UmutAlisoglu/DualDrop/issues) and tell us your phone model, Android version, camera model and what happened.
 
 ## Privacy
 
-Osmosis talks to **only your camera** (`192.168.2.1`). No analytics, no accounts, no activation servers, no cloud. Your media never leaves your phone and camera.
-
-Contrast the official apps, which require a login and phone home to activation and telemetry backends (the Xtra companion app even bundles ByteDance analytics). Osmosis has none of that — the network security config restricts it to the camera's local address.
-
-## Requirements
-
-- **Android 10+** (API 29).
-- **Bluetooth LE**.
-- Permissions: 
-  - Nearby devices (Bluetooth scan/connect) on Android 12+, or Location on older versions
-  - WiFi state/change. 
-  - No internet permission is needed for anything but the camera's local AP.
-  - No storage permission needed due to the use of Android's media APIs to save content.
-
-## Build from source
-
-Standard Gradle Android build:
-
-```sh
-./gradlew assembleDebug
-```
-
-Plain Android Views (no Jetpack Compose). Built with AGP 8.5.2 / Gradle 8.7 / JDK 17 (JDK 17–21 work); `compileSdk 34`, `minSdk 29`.
-
-## Roadmap
-
-Planned work and reverse-engineering notes live in [ROADMAP.md](ROADMAP.md).
-
-As of v1.4.3, the app is basically at it's plateau feature-wise. I do wish to add support for older cameras and more drones, but the app will remain the same, no groundbreaking additions or new capabilities are foreseen to be added. I do not want [feature creep](https://en.wikipedia.org/wiki/Feature_creep) to make the app worse, given the complexity of supporting many different action cameras and handheld cameras, as well as drones. Enumerating and downloading media is hard enough as it is. Updates will largely consist of supporting new hardware, fixing bugs and UX/UI polishing.
-
-## Projects using Osmosis references:
-
-- https://github.com/brianmerchant/Kaze-for-DJI
-- https://github.com/erik-sutton95/OpenPocketCine
-- https://github.com/intermittech/OsmoOffload
-- https://github.com/rover1312/shutterlink
-- https://github.com/brianmerchant/Pocket3Direct-Android
-- https://github.com/dstrat28/action-multicam-remote
-
-## Credits
-
-The monumental task of reverse engineering DJI's DUML protocol was initially done by the [DJI OGs](https://github.com/o-gs). DJI never released an SDK for their Osmo camera line, forcing users onto the DJI Mimo app. Thankfully several folks on GitHub open-sourced their reverse-engineering efforts to interact with DJI cameras over BLE and WiFi:
-
-- https://github.com/dimadesu/dji-remote (Osmosis vendors its `DjiCrc` implementation)
-- https://github.com/SemiConscious/osmo-download
-- https://github.com/sniffingpickles/DJI-Wifi-Connect
-- https://github.com/yigitkonur/lib-osmo-ble
-- https://github.com/samuelsadok/dji_protocol
-- https://github.com/xaionaro/reverse-engineering-dji
-
-DJI's own official [Osmo-GPS-Controller-Demo](https://github.com/dji-sdk/Osmo-GPS-Controller-Demo) was also a useful reference for the accessory (R-SDK) pairing protocol.
-
-This application couldn't have been built without the work above. That said, much of it didn't work for the Osmo Nano and Edge Pro, so a significant additional reverse-engineering effort went into making Osmosis fully compatible with the DJI Osmo Nano, as well as fully reverse engineering the responses to unsupported DUML commands.
-
-Also, credit where is due to the testers who provided early feedback and helped me develop this for cameras I don't own:
-
-- [Rhoenschrat](https://www.rhoenschrat.de/)
-- [Juan Irache](https://github.com/JuanIrache)
-- [GetHypoxic](https://gethypoxic.com/)
-
-## License
-
-[MIT](LICENSE.txt).
+DualDrop talks only to your camera. There are no analytics, no accounts, no ads and no cloud uploads. Your photos and videos go straight from the camera to your phone and nowhere else.
 
 ## Disclaimer
 
-Independent third-party project — **not affiliated with, authorized, or endorsed by DJI**. "DJI" and "Osmo" are trademarks of their respective owners. Use at your own risk; deleting or offloading media is your responsibility.
+DualDrop is an independent, unofficial project. It is **not affiliated with, endorsed by or sponsored by DJI**. "DJI", "Osmo" and "Osmo Action" are trademarks of SZ DJI Technology Co., Ltd. and are used here only to say which cameras the app works with. DualDrop contains no DJI code, SDK or firmware.
+
+The software is provided "as is", without warranty of any kind. Use it at your own risk. Deleting or downloading media is your responsibility. The Wi-Fi feature only changes a runtime setting that resets on restart; it does not modify firmware.
+
+## Credits and licence
+
+DualDrop is built on [**Osmosis**](https://github.com/KonradIT/Osmosis) by Konrad Iturbe, which does all of the camera work: Bluetooth pairing, browsing, previewing and downloading. A big thank you to Konrad and everyone credited in the [original Osmosis README](docs/OSMOSIS_README.md#credits). DualDrop adds the "keep home Wi-Fi" feature, easier multi-select downloads and a new design.
+
+DualDrop is released under the MIT licence, like Osmosis. See [LICENSE.txt](LICENSE.txt) (Copyright Konrad Iturbe and contributors). Bundled third-party libraries and their licences are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## For developers
+
+- **Build:** JDK 17, Android SDK 36. Run `./gradlew assembleDebug` (or `assembleRelease` with your own `keystore.properties`).
+- **DualDrop's own code** lives in `app/src/main/java/de/druomi/osmolink/` and `res/values*/osmolink_strings.xml`. Small changes to Osmosis files are marked with `DualDrop:` comments.
+- **Maintenance notes** (building, releasing, merging updates from Osmosis): [MAINTAINING.md](MAINTAINING.md)
+- **Camera protocol documentation** from Osmosis: [MEDIA_PROTOCOL.md](MEDIA_PROTOCOL.md)
+- **Original Osmosis README** (features, supported cameras, credits): [docs/OSMOSIS_README.md](docs/OSMOSIS_README.md)

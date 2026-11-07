@@ -1,0 +1,2 @@
+* Clearer, English-first texts: the app now calls itself DualDrop everywhere.
+* "Last action" time follows your phone's date format.
