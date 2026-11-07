@@ -18,6 +18,18 @@ The technical background: the app runs `cmd wifi force-overlay-config-value bool
 
 **Deutsch:** DualDrop ersetzt DJI Mimo und hält dein Handy mit dem Heim-WLAN verbunden, während es mit der Kamera verbunden ist. Einmalige Einrichtung direkt in der App (ohne PC, ohne Root), danach läuft alles automatisch, auch nach Neustarts.
 
+### Not affiliated with DJI / Disclaimer
+
+DualDrop is an independent, unofficial project. It is **not affiliated with, endorsed by or sponsored by DJI**. "DJI", "Osmo" and "Osmo Action" are trademarks of SZ DJI Technology Co., Ltd. and are used here only to describe which cameras the app works with. No DJI code, SDK or firmware is included.
+
+The software is provided "as is", without warranty of any kind; use it at your own risk. The Wi-Fi feature only changes a runtime setting that resets on reboot; it does not modify firmware.
+
+*Deutsch:* DualDrop ist ein inoffizielles, unabhängiges Projekt und **nicht mit DJI verbunden**. Nutzung ohne Gewähr und auf eigenes Risiko.
+
+### Licence
+
+DualDrop is released under the MIT licence, like Osmosis; see [LICENSE.txt](LICENSE.txt) (Copyright Konrad Iturbe and contributors). Bundled third-party libraries and their licences are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
 ---
 
 *The original Osmosis README follows.*
