@@ -1,6 +1,7 @@
 name: Build & release APK
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - '**'
@@ -11,6 +12,11 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # DualDrop releases are signed locally and attached by hand (see MAINTAINING.md). Without the
+    # APP_KEYSTORE secret the tag build still runs, emits an unsigned release APK as an artifact and
+    # skips the draft release, instead of failing in packageRelease on an empty keystore.
+    env:
+      HAS_KEYSTORE: ${{ secrets.APP_KEYSTORE != '' }}
     steps:
       - name: Checkout repository and submodules
         uses: actions/checkout@v4
@@ -32,9 +38,11 @@ jobs:
           cache: 'gradle'
 
       - name: Decode keystore
+        if: env.HAS_KEYSTORE == 'true'
         run: printf "%s" "${{ secrets.APP_KEYSTORE }}" | base64 --decode > app-keystore.jks
 
       - name: Create keystore.properties
+        if: env.HAS_KEYSTORE == 'true'
         run: |
           cat > keystore.properties <<EOF
           storePassword=${{ secrets.STOREPASSWORD }}
@@ -63,10 +71,11 @@ jobs:
       # who grabs it instead of the real one gets "App not installed" over their existing install.
       # That happened on v1.3.1-rc1 and had to be cleaned up by hand.
       - name: Create draft GitHub Release
+        if: env.HAS_KEYSTORE == 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: Osmosis ${{ github.ref_name }}
+          name: DualDrop ${{ github.ref_name }}
           draft: true
           files: |
             app/build/outputs/apk/release/*.apk
